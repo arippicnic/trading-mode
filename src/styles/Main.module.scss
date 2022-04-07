@@ -1,0 +1,68 @@
+@import "./vars.scss";
+
+.trv {
+  position: relative;
+  width: 100%;
+  &_price {
+    position: absolute;
+    z-index: 10;
+    left: 0px;
+    bottom: 0px;
+    padding-bottom: 2.2rem;
+    padding-left: 0.4rem;
+  }
+  &_closed {
+    padding-bottom: 2px;
+    z-index: 10;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
+}
+
+.prgs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  z-index: 10;
+  background-color: transparent;
+  overflow: hidden;
+  &_active {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #1967d2;
+    -webkit-animation: loadBar 2s cubic-bezier(0.09, 0.89, 0.7, 0.71) infinite;
+    -moz-animation: loadBar 2s cubic-bezier(0.09, 0.89, 0.7, 0.71) infinite;
+    animation: loadBar 2s cubic-bezier(0.09, 0.89, 0.7, 0.71) infinite;
+  }
+}
+
+.srch {
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  background-color: #8882;
+  &_result {
+    margin-top: 10px;
+    box-shadow: var(--box-shadow);
+    background-color: var(--color-background-elements);
+    border-radius: 8px;
+    width: inherit;
+  }
+}
+
+.card {
+  box-shadow: var(--box-shadow);
+}
+
+.tots {
+  position: fixed;
+  left: 50%;
+  top: 4rem;
+  transform: translate(-50%, -50%);
+}

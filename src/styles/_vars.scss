@@ -1,0 +1,11 @@
+.light {
+  --background: #f7f7f7;
+  --box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08), 0px 1px 4px rgba(0, 0, 0, 0.08);
+  --color-background-elements: #fff;
+}
+
+.dark {
+  --background: #222427;
+  --box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.49), 0px 1px 4px rgba(13, 13, 13, 0.06);
+  --color-background-elements: #242425;
+}
