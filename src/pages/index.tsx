@@ -24,7 +24,7 @@ export async function getServerSideProps({ req, res }: { req: NextApiRequest; re
     return {
       props: {
         title: "Fear Gred Index",
-        contentFear: { value: fear.value, fication: fear.value_classification },
+        contentFear: { value: fear.val, fication: fear.value_classification },
       },
     };
   } catch (err) {

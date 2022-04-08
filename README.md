@@ -2,23 +2,14 @@
 
 Projects build with [Next.js](https://nextjs.org/)
 
-- Demo on Heroku - [uscisum.herokuapp.com](https://uscisum.herokuapp.com/)
-- Single authentication for administrators
-- POST an article
-- Voting article with IP address
-- Light and dark theme
-- SEO friendly
-- Express + NextJS Integration
-- MongoDb Integration
+- Demo on Vercel - [trading-mode.vercel.app](https://trading-mode.vercel.app/)
 
 ## Quick Start Guide
 
 You should have a `.env` at the root project directory that has keys:
 
-- [`DB_PATH`] for the DB connection
-- [`ADMIN_PASSWORD`, `ADMIN_SESSION`] for authentication
-- [`NODE_ENV`] `development` for development mode and `production` for production mode
-- [`HOST`, `PORT`] for setup server
+- [`KEY_CONVERTER`] for convert USD to IDR - [free.currencyconverterapi.com](https://free.currencyconverterapi.com)
+- [`HOST`] for setup server
 
 ## Installation
 
