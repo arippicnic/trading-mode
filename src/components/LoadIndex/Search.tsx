@@ -18,7 +18,7 @@ const Search: React.FC = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [cursor, setCursor] = useState<number>(-1);
   const addToast = useToastContext();
-  const wrapperRef = useRef(null);
+  const wrapperRef = useRef<HTMLInputElement | null>(null);
   const results = fetchSearch({ query });
 
   const handleFocus = () => setActive(true);
@@ -85,8 +85,7 @@ const Search: React.FC = () => {
   };
 
   useEffect(() => {
-    if (inputRef?.current) {
-      inputRef.current.focus();
+    if (inputRef?.current && inputRef.current.value) {
       inputRef.current.selectionStart = inputRef.current.value.length;
       inputRef.current.selectionEnd = inputRef.current.value.length;
     }

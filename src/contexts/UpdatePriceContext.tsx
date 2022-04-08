@@ -17,7 +17,7 @@ export const UpdatePriceProvider: React.FC<{ children: React.ReactNode; data: Cr
   useEffect(() => {
     let isSubscribed = true;
     const fetchData = async () => {
-      const priceData = await (await fetch(`/api/search?p=${splitUrl}`)).json();
+      const priceData = await (await fetch(`/api/search/price?p=${splitUrl}`)).json();
       if (isSubscribed && priceData) {
         let obj = {};
         for (const ev of priceData.coin) {

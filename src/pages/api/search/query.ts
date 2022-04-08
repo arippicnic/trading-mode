@@ -6,9 +6,12 @@ const handler = nc<NextApiRequest, NextApiResponse>().use(cors());
 
 handler.get(async (req, res) => {
   try {
-    const data = await (await fetch("https://api.alternative.me/fng")).json();
+    const query = req.query.q as string;
+    if (!query) res.status(400).json({ error: "Cannot find currency" });
+    const URLCOICAP = `https://api.coincap.io/v2/assets?search=${query.toLowerCase()}&limit=5`;
+    const data = await (await fetch(URLCOICAP)).json();
     if (!data) res.status(400).json({ error: "Cannot find currency" });
-    res.send(data?.data[0]);
+    res.send(data.data);
   } catch (err) {
     res.status(500).json({ error: "failed to load data" });
   }

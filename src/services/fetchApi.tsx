@@ -4,7 +4,7 @@ import { isApiError } from "./general";
 
 export const fetchSearch = ({ query }: { query: string }) => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const { data } = useSWR(query ? `/api/search?q=${query}` : null, fetcher);
+  const { data } = useSWR(query ? `/api/search/query?q=${query}` : null, fetcher);
   return data;
 };
 
