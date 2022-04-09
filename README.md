@@ -24,3 +24,10 @@ First, run the development server:
 ```bash
 yarn dev
 ```
+
+## Credits
+
+- Chart - [tradingview.com](https://tradingview.com)
+- RESTful API & WebSocket - [coincap.io](https://coincap.io)
+- RESTful API Currency Converter - [free.currencyconverterapi.com](https://free.currencyconverterapi.com)
+- RESTful API Crypto Fear & Greed Index - [alternative.me](https://alternative.me)

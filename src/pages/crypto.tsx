@@ -7,7 +7,7 @@ import Link from "@/components/Link";
 import { useCryptoContext } from "@/contexts/CryptoContext";
 import Tooltip, { isToltip } from "@/components/Tooltip";
 
-const Home: NextPage = () => {
+const Crypto: NextPage = () => {
   const toltipData = isToltip({ name: "Back to home", loop: false });
   const router = useRouter();
   const { state } = useCryptoContext();
@@ -39,4 +39,4 @@ const Home: NextPage = () => {
   return <RenderContent />;
 };
 
-export default Home;
+export default Crypto;
