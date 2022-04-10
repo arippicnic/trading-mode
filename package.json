@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "copy": "copyfiles --flat src/pages/api/_cache/_data/info.json src/pages/api/_cache",
-    "clean": "rimraf node_modules/.cache .next"
+    "clean": "rimraf node_modules/.cache .next & rimraf src/pages/api/_cache/_data/info.json"
   },
   "author": "",
   "license": "ISC",

@@ -1,1 +1,4 @@
-{"price":{"val":"14367.2","date":"Fri Apr 08 2022 20:34:56 GMT+0700 (Western Indonesia Time)"},"fear":{"val":"34","value_classification":"Fear","date":"Mon Apr 11 2022 01:06:54 GMT+0700 (Western Indonesia Time)"}}
+{
+  "price": { "val": "14367.2", "date": "Fri Apr 08 2022 20:34:56 GMT+0700 (Western Indonesia Time)" },
+  "fear": { "val": "34", "value_classification": "Fear", "date": "Mon Apr 11 2022 01:06:54 GMT+0700 (Western Indonesia Time)" }
+}
