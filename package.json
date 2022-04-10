@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "(sleep 5 npm run clean & npm run copy) & next dev",
+    "build": "(sleep 5 npm run clean & npm run copy) & next build",
     "start": "next start",
     "lint": "next lint",
     "copy": "copyfiles --flat src/pages/api/_cache/_data/info.json src/pages/api/_cache",
