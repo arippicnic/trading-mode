@@ -11,11 +11,15 @@ const handler = nc<NextApiRequest, NextApiResponse>().use(cors());
 handler.get(async (req, res) => {
   const msgPrice = "Running a task 3 Hour";
   const msgFrear = "Running a task 5 Hour";
+  const fear = await cronFear();
+  const price = await cronPrice();
   cron.schedule("0 0 */3 * * *", async () => {
-    await cronPrice();
+    console.log(msgFrear);
+    fear;
   });
   cron.schedule("0 0 */5 * * *", async () => {
-    await cronFear();
+    price;
+    console.log(msgPrice);
   });
   res.status(200).json({ msgPrice, msgFrear });
 });

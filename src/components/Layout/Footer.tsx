@@ -8,12 +8,9 @@ const Footer: React.FC = () => {
     { label: `©${new Date().getFullYear()} ${siteMetadata.author}`, href: "/" },
   ].map(({ label, href }: { label: string; href: string }) => {
     return (
-      <Link href={href}>
-        <li>
-          {` • `}
-          {label}
-        </li>
-      </Link>
+      <li key={href}>
+        <Link href={href}>{label}</Link>
+      </li>
     );
   });
 

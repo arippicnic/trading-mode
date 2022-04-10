@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "copy": "copyfiles --flat src/pages/api/_cache/_data/info.json src/pages/api/_cache",
     "clean": "rimraf node_modules/.cache .next"
   },
   "author": "",
@@ -15,6 +16,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.4",
     "classnames": "^2.3.1",
+    "copyfiles": "^2.4.1",
     "cors": "^2.8.5",
     "next": "^12.1.0",
     "next-connect": "^0.12.2",
