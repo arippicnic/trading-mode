@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect} from "react";
 import { useTheme } from "next-themes";
 
 import { CryptoResults } from "@/types";
@@ -28,12 +28,11 @@ const Items: React.FC<{ data: CryptoResults; scren: SrenMode }> = ({ data, scren
     const script = document.createElement("script");
     script.async = true;
     script.innerHTML = srciptData;
-
-    isRef.current?.appendChild(script);
-    return () => {
-      isRef.current?.removeChild(script);
-    };
-  }, [srciptData]);
+    if(!isRef.current){
+      return;
+    }
+    isRef.current.appendChild(script);
+  }, []);
 
   return (
     <div className="tradingview-widget-container" ref={isRef}>
