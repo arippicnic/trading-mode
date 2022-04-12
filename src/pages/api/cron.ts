@@ -9,19 +9,23 @@ import dataFile from "./_cache/info.json";
 const handler = nc<NextApiRequest, NextApiResponse>().use(cors());
 
 handler.get(async (req, res) => {
-  const msgPrice = "Running a task 3 Hour";
-  const msgFrear = "Running a task 5 Hour";
+  const cron1 = cron;
+  const cron2 = cron;
+
+  cron1.schedule("0 0 */3 * * *", async () => {
+    const price = await cronPrice();
+    console.log(price);
+  });
+  cron2.schedule("0 0 */5 * * *", async () => {
+    const fear = await cronFear();
+    console.log(fear);
+  });
+
   const fear = await cronFear();
   const price = await cronPrice();
-  cron.schedule("0 0 */3 * * *", async () => {
-    console.log(msgFrear);
-    fear;
-  });
-  cron.schedule("0 0 */5 * * *", async () => {
-    price;
-    console.log(msgPrice);
-  });
-  res.status(200).json({ msgPrice, msgFrear });
+  const msgPrice = { info: "Price Running a task 3 Hour", data: price };
+  const msgFrear = { info: "Fear Running a task 5 Hour", data: fear };
+  res.status(200).json([msgFrear, msgPrice]);
 });
 
 async function cronPrice() {
@@ -29,17 +33,15 @@ async function cronPrice() {
     const { KEY_CONVERTER } = process.env;
     const URLCONVERTAPI = `https://free.currencyconverterapi.com/api/v5/convert?q=USD_IDR&compact=y&apiKey=${KEY_CONVERTER}`;
     const dataConvert = await (await fetch(URLCONVERTAPI)).json();
+    if (!dataConvert.USD_IDR) return console.log(dataConvert);
+    const filePath = path.resolve(process.cwd(), "./src/pages/api/_cache/info.json");
 
-    const upData = (event: string) => {
-      const filePath = path.join(process.cwd(), "./src/pages/api/_cache/info.json");
-      dataFile.price.val = `${event}`;
-      dataFile.price.date = `${new Date()}`;
-      fs.writeFile(filePath, JSON.stringify(dataFile), function writeJSON(err) {
-        if (err) return console.log(err);
-      });
-    };
-
-    upData(dataConvert.USD_IDR?.val);
+    dataFile.price.val = `${dataConvert.USD_IDR.val}`;
+    dataFile.price.date = `${new Date()}`;
+    fs.writeFile(filePath, JSON.stringify(dataFile, null, 4), (err) => {
+      if (err) return console.log(err);
+    });
+    return dataFile.price;
   } catch (err) {
     return { err };
   }
@@ -49,18 +51,16 @@ async function cronFear() {
   try {
     const URLCONVERTAPI = `https://api.alternative.me/fng`;
     const dataFear = await (await fetch(URLCONVERTAPI)).json();
+    if (!dataFear) return console.log(dataFear);
 
-    const upData = (event: { value: string; value_classification: string }) => {
-      const filePath = path.join(process.cwd(), "./src/pages/api/_cache/info.json");
-      dataFile.fear.val = `${event.value}`;
-      dataFile.fear.value_classification = `${event.value_classification}`;
-      dataFile.fear.date = `${new Date()}`;
-      fs.writeFile(filePath, JSON.stringify(dataFile), function writeJSON(err) {
-        if (err) return console.log(err);
-      });
-    };
-
-    upData(dataFear.data[0]);
+    const filePath = path.resolve(process.cwd(), "./src/pages/api/_cache/info.json");
+    dataFile.fear.val = `${dataFear.data[0].value}`;
+    dataFile.fear.value_classification = `${dataFear.data[0].value_classification}`;
+    dataFile.fear.date = `${new Date()}`;
+    fs.writeFile(filePath, JSON.stringify(dataFile, null, 4), (err) => {
+      if (err) return console.log(err);
+    });
+    return dataFile.fear;
   } catch (err) {
     return { err };
   }

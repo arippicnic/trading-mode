@@ -6,7 +6,7 @@ import { SrenMode } from "./scren";
 
 const Items: React.FC<{ data: CryptoResults; scren: SrenMode }> = ({ data, scren }) => {
   const { symbol, time, _id } = data;
-  const isRef = useRef<HTMLInputElement | null>(null);
+  const isRef = useRef<HTMLDivElement | null>(null);
   const { theme } = useTheme();
 
   const srciptData = `new TradingView.widget({

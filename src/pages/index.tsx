@@ -9,9 +9,7 @@ const Home: NextPage<{ contentFear: FearType }> = ({ contentFear }) => {
   return (
     <div className="main-content">
       <LoadIndex />
-      <div className="flex flex-col items-center">
-        <FearGreadIndex fication={contentFear.fication} value={contentFear.value} />
-      </div>
+      <FearGreadIndex fication={contentFear.fication} value={contentFear.value} />
     </div>
   );
 };
