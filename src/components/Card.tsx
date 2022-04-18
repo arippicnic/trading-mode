@@ -1,8 +1,8 @@
-import { CryptoResults } from "@/types";
 import cn from "classnames";
 import { BsXLg } from "react-icons/bs";
-import Tooltip, { isToltip } from "@/components/Tooltip";
 
+import { CryptoResults } from "@/types";
+import Tooltip, { isToltip } from "@/components/Tooltip";
 import { useCryptoContext } from "@/contexts/CryptoContext";
 import styles from "@/styles/Main.module.scss";
 
@@ -14,7 +14,7 @@ const Header: React.FC<CryptoCardPropType> = ({ data }) => {
   const toltipData = isToltip({ name: "Remove", loop: true });
   const { dispatch } = useCryptoContext();
   return (
-    <div className={cn(styles.card, "card bg-white dark:bg-[#242425] m-2 rounded-md")}>
+    <div className={cn(styles.card, "bg-white dark:bg-[#242425] rounded-md m-2")}>
       <div className="p-3">
         <h2 className="text-lg mb-2">
           {data.symbol}
@@ -26,7 +26,7 @@ const Header: React.FC<CryptoCardPropType> = ({ data }) => {
           </button>
         </h2>
         <Tooltip id={toltipData["data-for"]} place="top" />
-        <p className="text-sm text-gray-500 dark:text-gray-400">{data.name}</p>
+        <p className="text-sm text-gray-400">{data.name}</p>
       </div>
     </div>
   );

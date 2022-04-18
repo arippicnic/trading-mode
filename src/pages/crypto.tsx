@@ -24,7 +24,7 @@ const Crypto: NextPage = () => {
     return (
       <main>
         <div className="absolute z-20 top-5 left-3">
-          <Link href="/">
+          <Link href="/trade">
             <button {...toltipData} className="text-white border border-wa-500 bg-black rounded-full p-1">
               <RiHomeLine className="text-sm" />
               <Tooltip id={toltipData["data-for"]} />

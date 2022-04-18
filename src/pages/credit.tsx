@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
+import cn from "classnames";
+
 import Link from "@/components/Link";
-import Button from "@/components/Button";
+import styles from "@/styles/Main.module.scss";
 
 const Credit: NextPage = () => {
   const links = [
@@ -10,9 +12,9 @@ const Credit: NextPage = () => {
     { label: "RESTful API Crypto Fear & Greed Index", href: "https://alternative.me" },
   ].map(({ label, href }: { label: string; href: string }) => {
     return (
-      <li className="pb-2">
-        {label}
-        <br />
+      <li className={cn(styles.card, "mb-3 py-2 bg-white dark:bg-[#242425] rounded-md")} key={href}>
+        <span>{label}</span>
+        <br></br>
         <Link href={href}>
           <span className="text-blue-600">{href.replace("https://", "")}</span>
         </Link>
@@ -21,18 +23,8 @@ const Credit: NextPage = () => {
   });
 
   return (
-    <div className="main-content">
-      <div className="text-center">
-        <h1 className="text-xl text-center">Credits</h1>
-        <div className="pt-5">
-          <ul>{links}</ul>
-        </div>
-        <div className="pt-5">
-          <Link href="/">
-            <Button className="text-xs">Back to Home</Button>
-          </Link>
-        </div>
-      </div>
+    <div className="main-content px-2 text-center">
+      <ul>{links}</ul>
     </div>
   );
 };

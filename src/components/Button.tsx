@@ -19,8 +19,8 @@ const Footer: React.FC<Props> = ({ children, className, onClick, disabled, type 
       disabled={disabled}
       className={cn(
         className,
-        disabled ? "bg-indigo-400 cursor-not-allowed" : "bg-indigo-600",
-        "py-2 px-4 border border-transparent text-md rounded-md text-white"
+        disabled ? "bg-indigo-400 cursor-not-allowed" : "bg-indigo-700",
+        "py-2 px-3 border border-transparent rounded-md text-white"
       )}
     >
       {children}

@@ -94,7 +94,7 @@ const Search: React.FC = () => {
   const { srch, srch_result } = styles;
 
   return (
-    <>
+    <div className="px-2">
       <div ref={wrapperRef} className="w-full">
         <div className={cn(srch, "flex items-center space-x-2 px-3 py-1 sm:py-1 md:py-2 lg:py-2")}>
           <FaSearch color="gray" />
@@ -122,7 +122,7 @@ const Search: React.FC = () => {
                   onMouseEnter={() => setCursor(i)}
                 >
                   <div className="search-result-click">
-                    {item.name} <span className="text-gray-500">{item.symbol}</span>
+                    {item.name} <span className="text-gray-400">{item.symbol}</span>
                   </div>
                 </li>
               ))}
@@ -130,7 +130,7 @@ const Search: React.FC = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
