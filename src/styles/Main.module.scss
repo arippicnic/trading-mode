@@ -44,20 +44,31 @@
 }
 
 .srch {
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  background-color: #8882;
+  background-color: var(--color-grey-dark-1);
   &_result {
     margin-top: 10px;
     box-shadow: var(--box-shadow);
     background-color: var(--color-background-elements);
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     width: inherit;
   }
 }
 
+.tbl{
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  &_th{
+    background-color: var(--color-grey-dark-1);
+  }
+  
+}
+
 .card {
   box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  background-color: var(--color-background-elements);
 }
 
 .tots {

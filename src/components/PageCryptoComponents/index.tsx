@@ -7,7 +7,7 @@ import { urlSplit } from "@/services/general";
 interface TradingViewProps {
   data: CryptoResults[];
 }
-const TredingView: React.FC<TradingViewProps> = ({ data }) => {
+const PageCrypto: React.FC<TradingViewProps> = ({ data }) => {
   const splitUrl = urlSplit(data);
   const ulrSocket = `wss://ws.coincap.io/prices?assets=${splitUrl}`;
   return (
@@ -25,4 +25,4 @@ const TredingView: React.FC<TradingViewProps> = ({ data }) => {
   );
 };
 
-export default TredingView;
+export default PageCrypto;

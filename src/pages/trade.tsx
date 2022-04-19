@@ -1,14 +1,15 @@
-import type { NextPage } from "next";
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextPage, NextApiRequest, NextApiResponse } from "next";
 
-import FearGreadIndex, { FearType } from "@/components/FearGreadIndex";
-import LoadIndex from "@/components/LoadIndex";
+import FearGreadIndex, { FearType } from "@/components/PageTradeComponents/FearGreadIndex";
+import PageTrade from "@/components/PageTradeComponents";
+import Search from "@/components/Search";
 import { isApiError } from "@/services/general";
 
-const Home: NextPage<{ contentFear: FearType }> = ({ contentFear }) => {
+const Trade: NextPage<{ contentFear: FearType }> = ({ contentFear }) => {
   return (
     <div className="main-content">
-      <LoadIndex />
+      <Search />
+      <PageTrade />
       <FearGreadIndex fication={contentFear.fication} value={contentFear.value} />
     </div>
   );
@@ -29,12 +30,10 @@ export async function getServerSideProps({ req, res }: { req: NextApiRequest; re
     if (isApiError(err)) {
       console.log(err.code);
       return {
-        props: {
-          error: err.code,
-        },
+        notFound: true,
       };
     }
   }
 }
 
-export default Home;
+export default Trade;

@@ -13,6 +13,10 @@ export const formartPrice = (number: number) => {
   return new Intl.NumberFormat().format(number);
 };
 
+export const toFixNumber = (number: number) => {
+  return (Math.round(number * 100) / 100).toFixed(2);
+};
+
 export const radomStr = () => {
   const random = (Math.random() + 1).toString(36).substring(5);
   return random;

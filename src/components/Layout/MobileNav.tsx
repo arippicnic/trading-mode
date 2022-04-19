@@ -1,35 +1,35 @@
-import { useState, useEffect } from "react";
-import Link from "@/components/Link";
+import { useState } from "react";
 import { useRouter } from "next/router";
-import classNames from "classnames";
-import siteMetadata from "@/siteMetadata";
+import cn from "classnames";
 
-const routes = [
-  {
-    path: "/",
-    label: siteMetadata.name,
-    exact: true,
-  },
-  { label: "Trade", path: "/trade" },
-  { label: "Credit", path: "/credit" },
-  { label: "Open Source", path: "https://github.com/arippicnic/trading-mode" },
-];
+import Link from "@/components/Link";
+import siteMetadata from "@/siteMetadata";
 
 export function MobileNav() {
   const [navShow, setNavShow] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    const body = document.body;
-    if (typeof body !== "undefined") {
-      if (navShow) {
-        body.style.setProperty("overflow", "hidden");
-      } else {
-        body.style.removeProperty("overflow");
-      }
-    }
-  }, [navShow]);
-  console.log(navShow);
+  const links = [
+    { path: "/", label: siteMetadata.name, exact: true },
+    { label: "Trade", path: "/trade" },
+    { label: "Credit", path: "/credit" },
+    { label: "Open Source", path: "https://github.com/arippicnic/trading-mode" },
+  ].map((route) => (
+    <div className="flex-grow" key={route.path}>
+      <Link href={route.path}>
+        <span
+          className={cn({
+            "dark:text-white text-black":
+              !!route.exact === true ? route.path === router.asPath : router.asPath.startsWith(route.path),
+          })}
+          onClick={() => setNavShow(false)}
+        >
+          {route.label}
+        </span>
+      </Link>
+    </div>
+  ));
+
   return (
     <div className="sm:hidden" aria-hidden={!navShow}>
       <button
@@ -60,21 +60,7 @@ export function MobileNav() {
               }}
             ></button>
             <nav className="fixed flex flex-col items-center w-full h-screen px-6 py-48 mt-auto text-gray-400 font-semibold tracking-widest text-fore-primary">
-              {routes.map((route) => (
-                <div className="flex-grow" key={route.path}>
-                  <Link href={route.path}>
-                    <span
-                      className={classNames({
-                        "dark:text-white text-black":
-                          !!route.exact === true ? route.path === router.asPath : router.asPath.startsWith(route.path),
-                      })}
-                      onClick={() => setNavShow(false)}
-                    >
-                      {route.label}
-                    </span>
-                  </Link>
-                </div>
-              ))}
+              {links}
             </nav>
           </div>
         </div>

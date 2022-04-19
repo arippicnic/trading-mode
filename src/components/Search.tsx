@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import cn from "classnames";
+import { toFixNumber } from "@/services/general";
 
 import { fetchSearch, fetchSearchQuery } from "@/services/fetchApi";
 import useToastContext from "@/hooks/useToasts";
@@ -112,7 +113,7 @@ const Search: React.FC = () => {
         {isActive && results && results.length > 0 && (
           <div className="relative w-full">
             <ul className={cn(srch_result, "absolute z-10")}>
-              {results.map((item: CryptoResults, i: number) => (
+              {results.map((item: CryptoResults & { changePercent24Hr: number }, i: number) => (
                 <li
                   key={item.id}
                   className={`px-4 py-2 leading-5 text-left cursor-pointer ${
@@ -121,8 +122,13 @@ const Search: React.FC = () => {
                   onClick={handleClickInside(item)}
                   onMouseEnter={() => setCursor(i)}
                 >
-                  <div className="search-result-click">
-                    {item.name} <span className="text-gray-400">{item.symbol}</span>
+                  <div className="search-result-click flex items-center justify-between text-sm">
+                    <div>
+                      {item.name} <span className="text-gray-400">{item.symbol}</span>
+                    </div>
+                    <span className={item.changePercent24Hr > 0 ? "text-green-500" : "text-red-500"}>
+                      {toFixNumber(item.changePercent24Hr)}%
+                    </span>
                   </div>
                 </li>
               ))}

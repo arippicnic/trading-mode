@@ -16,19 +16,17 @@ const Header: React.FC = () => {
   const links = [
     { label: "Trade", path: "/trade" },
     { label: "Credit", path: "/credit" },
-  ].map(({ label, path }: { label: string; path: string }) => {
-    return (
-      <li
-        key={path}
-        className={cn(
-          path === pageCrypto ? "text-black dark:text-white" : "text-gray-400",
-          "hidden sm:block ml-8 hover:text-black dark:hover:text-white"
-        )}
-      >
-        <Link href={path}>{label}</Link>
-      </li>
-    );
-  });
+  ].map(({ label, path }: { label: string; path: string }) => (
+    <li
+      key={path}
+      className={cn(
+        path === pageCrypto ? "text-black dark:text-white" : "text-gray-400",
+        "hidden sm:block ml-8 hover:text-black dark:hover:text-white"
+      )}
+    >
+      <Link href={path}>{label}</Link>
+    </li>
+  ));
 
   return (
     <>
