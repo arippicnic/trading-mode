@@ -1,26 +1,18 @@
 import cn from "classnames";
 
 import TableList from "./TableList";
-import { CryptoActionType, CryptoStateType } from "@/types";
+import { CryptoActionType, CryptoStateType, CurrencyApiType } from "@/types";
 import useToastContext from "@/hooks/useToasts";
 import styles from "@/styles/Main.module.scss";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { radomStr } from "@/services/general";
 import { fetchSearchQuery } from "@/services/fetchApi";
 
-export interface CurrencyApiType {
-  changePercent24Hr: number;
-  id: string;
-  priceUsd: number;
-  name: string;
-  symbol: string;
-  rank: number;
-}
-interface TableType {
+type TableType = {
   currenys: CurrencyApiType[];
   dispatch: React.Dispatch<CryptoActionType>;
   state: CryptoStateType;
-}
+};
 
 const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
   const addToast = useToastContext();
@@ -28,10 +20,24 @@ const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
   const widthTable = width! < 637 ? "hidden" : "";
   const handleAddCrypto = (item: CurrencyApiType) => (e: React.MouseEvent<HTMLElement>) => {
     const { symbol, name, id, priceUsd } = item;
+
+    let cryptoState = false;
+    for (let key of state.crypto) {
+      if (id === key.id) {
+        cryptoState = true;
+        dispatch!({ type: "REMOVE", value: key._id });
+      }
+    }
+
+    if (cryptoState) {
+      return;
+    }
+
     if (state.crypto.length === 3) {
       addToast("Max crypto 3");
       return;
     }
+
     async function fetchAPI() {
       const resultsQuery = await fetchSearchQuery({ query: symbol });
       const _id = radomStr();

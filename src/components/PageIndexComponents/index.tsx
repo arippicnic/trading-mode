@@ -1,6 +1,7 @@
 import { useCryptoContext } from "@/contexts/CryptoContext";
 import Card from "@/components/Card";
-import Table, { CurrencyApiType } from "@/components/PageIndexComponents/Table";
+import Table from "@/components/PageIndexComponents/Table";
+import { CurrencyApiType } from "@/types";
 
 const PageIndex: React.FC<{ currenys: CurrencyApiType[] }> = ({ currenys }) => {
   const { state, dispatch } = useCryptoContext();

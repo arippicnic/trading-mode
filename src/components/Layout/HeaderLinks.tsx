@@ -4,9 +4,9 @@ import cn from "classnames";
 import Link from "@/components/Link";
 import siteMetadata from "@/siteMetadata";
 
-interface HeaderLinksTypes {
+type HeaderLinksTypes = {
   mobileMode: boolean;
-}
+};
 
 const HeaderLinks: React.FC<HeaderLinksTypes> = ({ mobileMode }) => {
   const pageCrypto = useRouter().pathname;

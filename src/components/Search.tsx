@@ -5,7 +5,7 @@ import { toFixNumber } from "@/services/general";
 
 import { fetchSearch, fetchSearchQuery } from "@/services/fetchApi";
 import useToastContext from "@/hooks/useToasts";
-import { CryptoResults } from "@/types";
+import { CurrencyApiType } from "@/types";
 import { useCryptoContext } from "@/contexts/CryptoContext";
 import { radomStr } from "@/services/general";
 import styles from "@/styles/Main.module.scss";
@@ -20,15 +20,15 @@ const Search: React.FC = () => {
   const [cursor, setCursor] = useState<number>(-1);
   const addToast = useToastContext();
   const wrapperRef = useRef<HTMLInputElement | null>(null);
-  const results = fetchSearch({ query });
+  const [results, setResults] = useState<CurrencyApiType[] | []>([]);
 
   const handleFocus = () => setActive(true);
-  const handleClickInside = (item: CryptoResults) => (e: React.MouseEvent<HTMLElement>) => {
+  const handleClickInside = (item: CurrencyApiType) => (e: React.MouseEvent<HTMLElement>) => {
     setActive(false);
     handleSubmit(item);
   };
   const handleQuery = () => {
-    if (!queryActice && results?.length) {
+    if (!queryActice && results.length) {
       setQuery(results[cursor].name.toLowerCase());
     }
     setQueryActice(true);
@@ -43,9 +43,9 @@ const Search: React.FC = () => {
     if (e.key === "ArrowUp" && cursor > 0) {
       setQueryActice(false);
       setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
-    } else if (e.key === "ArrowDown" && cursor < results?.length - 1) {
+    } else if (e.key === "ArrowDown" && cursor < results.length - 1) {
       setQueryActice(false);
-      setCursor((prevState) => (prevState < results?.length - 1 ? prevState + 1 : prevState));
+      setCursor((prevState) => (prevState < results.length - 1 ? prevState + 1 : prevState));
     } else if (e.key === "Backspace") {
       handleQuery();
     } else if (e.key === "Enter") {
@@ -56,13 +56,14 @@ const Search: React.FC = () => {
     }
   };
 
-  const handleSubmit = (item: CryptoResults) => {
-    const { _id = radomStr(), symbol, name, id, priceUsd }: CryptoResults = item;
+  const handleSubmit = (item: CurrencyApiType) => {
+    const { symbol, name, id, priceUsd }: CurrencyApiType = item;
 
     if (state.crypto.length === 3) {
       addToast("Max crypto 3");
       return;
     }
+    const _id = radomStr();
     async function fetchAPI() {
       const resultsQuery = await fetchSearchQuery({ query: symbol });
       if (!resultsQuery.error) {
@@ -92,6 +93,18 @@ const Search: React.FC = () => {
     }
   });
   useOutside({ ref: wrapperRef, status: setActive });
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      async function fetchAPISearch() {
+        const result = await fetchSearch({ query });
+        setResults(result);
+      }
+      fetchAPISearch();
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [query]);
+
   const { srch, srch_result } = styles;
 
   return (
@@ -113,7 +126,7 @@ const Search: React.FC = () => {
         {isActive && results && results.length > 0 && (
           <div className="relative w-full">
             <ul className={cn(srch_result, "absolute z-10")}>
-              {results.map((item: CryptoResults & { changePercent24Hr: number }, i: number) => (
+              {results.map((item, i) => (
                 <li
                   key={item.id}
                   className={`px-4 py-2 leading-5 text-left cursor-pointer ${

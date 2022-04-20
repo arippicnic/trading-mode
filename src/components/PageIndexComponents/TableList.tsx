@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { AiFillStar } from "react-icons/ai";
 
-import { CurrencyApiType } from "./Table";
+import { CurrencyApiType } from "@/types";
 import { formartPrice, toFixNumber } from "@/services/general";
 
 interface TypeTableList {

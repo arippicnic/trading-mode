@@ -1,23 +1,31 @@
 export type IntervalTime = "1" | "5" | "60" | "D" | "W";
 
-export interface CryptoResults {
-  _id: string;
+type Crypto = {
   id: string;
   name: string;
   symbol: string;
   priceUsd: number;
-  time?: IntervalTime;
-}
+};
 
-export interface CryptoStateType {
+export type CryptoResults = {
+  _id: string;
+  time?: IntervalTime;
+} & Crypto;
+
+export type CryptoStateType = {
   crypto: CryptoResults[];
   loading?: boolean;
   pair: number;
-}
+};
 
-export interface CryptoPrice {
+export type CurrencyApiType = {
+  changePercent24Hr: number;
+  rank: number;
+} & Crypto;
+
+export type CryptoPrice = {
   [key: string]: string;
-}
+};
 
 export type CryptoActionType =
   | { type: "STORAGE"; value: CryptoStateType }
@@ -26,7 +34,7 @@ export type CryptoActionType =
   | { type: "CHANGETIME"; value: IntervalTime }
   | { type: "CHANGEPRICE"; value: { coin: CryptoPrice; pair: number } };
 
-export interface CryptoContextType {
+export type CryptoContextType = {
   state: CryptoStateType;
   dispatch?: React.Dispatch<CryptoActionType>;
-}
+};

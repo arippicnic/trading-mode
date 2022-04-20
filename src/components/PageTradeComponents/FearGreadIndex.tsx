@@ -1,10 +1,10 @@
 import Tooltip, { isToltip } from "@/components/Tooltip";
 import { perc2color } from "@/services/general";
 
-export interface FearType {
+export type FearType = {
   fication: string;
   value: number;
-}
+};
 
 const FearGreadIndex: React.FC<FearType> = ({ fication, value }) => {
   const toltipDatas = isToltip({ name: "Fear and Greed Index", loop: false });

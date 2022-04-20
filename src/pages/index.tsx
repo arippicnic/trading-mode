@@ -1,7 +1,7 @@
 import type { NextPage, NextApiRequest, NextApiResponse } from "next";
 
 import PageIndex from "@/components/PageIndexComponents";
-import { CurrencyApiType } from "@/components/PageIndexComponents/Table";
+import { CurrencyApiType } from "@/types";
 import Search from "@/components/Search";
 import { isApiError } from "@/services/general";
 
