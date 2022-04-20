@@ -65,7 +65,6 @@ const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
   };
 
   const { tbl, tbl_th } = styles;
-  console.log(state.crypto);
   return (
     <div className="mx-auto px-2">
       <div>
@@ -76,7 +75,7 @@ const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
                 <th className="pl-5 py-4">Name</th>
                 <th className={cn("text-right px-5", widthTable)}>Price IDR</th>
                 <th className={cn("text-right px-5", widthTable)}>Ranking</th>
-                <th className="text-right px-5">Change (24 Hour)</th>
+                <th className="text-right px-5">24 Hour</th>
               </tr>
             </thead>
             <tbody>
