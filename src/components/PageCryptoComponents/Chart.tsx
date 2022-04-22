@@ -1,4 +1,4 @@
-import { useRef, useEffect} from "react";
+import { useRef, useEffect } from "react";
 import { useTheme } from "next-themes";
 
 import { CryptoResults } from "@/types";
@@ -28,7 +28,7 @@ const Items: React.FC<{ data: CryptoResults; scren: SrenMode }> = ({ data, scren
     const script = document.createElement("script");
     script.async = true;
     script.innerHTML = srciptData;
-    if(!isRef.current){
+    if (!isRef.current) {
       return;
     }
     isRef.current.appendChild(script);

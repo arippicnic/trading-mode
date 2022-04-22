@@ -10,7 +10,7 @@ export function ToastContextProvider({ children }: { children: React.ReactNode }
   const [toast, setToast] = useState<string>("");
 
   const addToast = useCallback(
-    function (toast) {
+    function (toast: string) {
       setToast(toast);
       setTimeout(() => {
         setToast("");

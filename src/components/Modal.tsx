@@ -8,6 +8,7 @@ import { useOutside } from "@/hooks/useOutside";
 interface ModalType {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
+  children: React.ReactNode;
 }
 
 const Modal: React.FC<ModalType> = ({ children, setShowModal, showModal }) => {

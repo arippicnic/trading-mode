@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "noEmit": false,
+      "sourceMap": true,
+      "target": "es5",
+      "module": "commonjs",
+      "declaration": true,
+      "outDir": "./build",
+      "strict": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+    },
+    "include": ["server/**/*"],
+  }
