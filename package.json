@@ -2,14 +2,14 @@
   "name": "0-tradingmode",
   "version": "1.1.0",
   "description": "Tradingview price tracker IDR",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./buildServer/index.js",
+  "types": "./buildServer/index.d.ts",
   "files": [
-    "build/**/*"
+    "buildServer/**/*"
   ],
   "scripts": {
-    "dev": "(sleep 5 && npm run clean) & nodemon",
-    "build": "(sleep 5 && npm run clean) & next build && tsc --project tsconfig.server.json",
+    "dev": "concurrently \"npm run clean\" \"sleep 5 && nodemon\"",
+    "build": "concurrently \"npm run clean\" \"sleep 5 && next build && tsc --project tsconfig.server.json\"",
     "start": "node ./buildServer/index.js",
     "lint": "next lint",
     "copy": "copyfiles --flat src/pages/api/_cache/_data/info.json src/pages/api/_cache",
@@ -20,6 +20,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.4",
     "classnames": "^2.3.1",
+    "concurrently": "^7.1.0",
     "copyfiles": "^2.4.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
