@@ -8,12 +8,12 @@
     "build/**/*"
   ],
   "scripts": {
-    "dev": "npm run clean & sleep 5 & nodemon",
-    "build": "npm run clean & sleep 5 & next build & tsc --build tsconfig.server.json",
+    "dev": "(sleep 5 && npm run clean) & nodemon",
+    "build": "(sleep 5 && npm run clean) & next build && tsc --project tsconfig.server.json",
     "start": "node ./buildServer/index.js",
     "lint": "next lint",
     "copy": "copyfiles --flat src/pages/api/_cache/_data/info.json src/pages/api/_cache",
-    "clean": "rimraf node_modules/.cache .next src/pages/api/_cache/info.json buildServer & npm run copy"
+    "clean": "rimraf node_modules/.cache .next src/pages/api/_cache/info.json buildServer && npm run copy"
   },
   "author": "",
   "license": "ISC",
