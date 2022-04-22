@@ -6,7 +6,7 @@
       "target": "es5",
       "module": "commonjs",
       "declaration": true,
-      "outDir": "./build",
+      "outDir": "./buildServer",
       "strict": true,
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true,

@@ -15,6 +15,7 @@
 
 # production
 /build
+/buildServer
 src/pages/api/_cache/info.json
 
 # misc

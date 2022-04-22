@@ -10,10 +10,10 @@
   "scripts": {
     "dev": "npm run clean & sleep 5 & nodemon",
     "build": "npm run clean & sleep 5 & next build & tsc --build tsconfig.server.json",
-    "start": "node ./build/index.js",
+    "start": "node ./buildServer/index.js",
     "lint": "next lint",
     "copy": "copyfiles --flat src/pages/api/_cache/_data/info.json src/pages/api/_cache",
-    "clean": "rimraf node_modules/.cache .next src/pages/api/_cache/info.json build & npm run copy"
+    "clean": "rimraf node_modules/.cache .next src/pages/api/_cache/info.json buildServer & npm run copy"
   },
   "author": "",
   "license": "ISC",
