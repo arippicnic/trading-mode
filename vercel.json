@@ -1,3 +1,3 @@
 {
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/server/index.ts" }]
+  "rewrites": [{ "source": "/api/(.*)", "destination": "/buildServer" }]
 }
