@@ -1,7 +1,6 @@
 {
-  "verbose": true,
-  "ignore": ["node_modules", ".next"],
-  "watch": ["server/**/*"],
-  "ext": "ts json",
-  "exec": "ts-node --project tsconfig.server.json -r tsconfig-paths/register -r dotenv/config --files server/index.ts"
+  "watch": ["server/**/*", "tsconfig.server.json"],
+  "ext": "ts",
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "ts-node --project tsconfig.server.json server/index.ts"
 }

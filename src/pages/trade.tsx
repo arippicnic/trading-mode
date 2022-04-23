@@ -19,11 +19,11 @@ export async function getServerSideProps({ req, res }: { req: NextApiRequest; re
   res.setHeader("Cache-Control", "public, s-maxage=10, stale-while-revalidate=59");
   try {
     const { HOST } = process.env;
-    const fear = await (await fetch(`${HOST}api/fear`)).json();
+    const fear = await (await fetch(`${HOST}api/v2/crypto/fear_gread`)).json();
     return {
       props: {
         title: "Fear Gred Index",
-        contentFear: { value: fear.val, fication: fear.value_classification },
+        contentFear: { value: fear.value, fication: fear.classification },
       },
     };
   } catch (err) {

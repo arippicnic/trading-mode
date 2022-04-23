@@ -4,6 +4,9 @@ import next from "next";
 import helmet from "helmet";
 import cors from "cors";
 
+import connectToDatabase from "./services/db";
+import routes from "./routes";
+
 const { NODE_ENV, PORT } = process.env;
 const dev = NODE_ENV !== "production";
 const app = next({ dev });
@@ -22,6 +25,8 @@ app.prepare().then(() => {
   server.use(express.json());
   server.use(express.urlencoded({ extended: true }));
 
+  server.use("/api/v2", routes);
+
   server.get("*", (req, res) => {
     return handler(req, res);
   });
@@ -29,10 +34,11 @@ app.prepare().then(() => {
   startServer();
 
   function startServer() {
-    server.listen(PORT, async (error?: any) => {
+    server.listen(PORT, async (error?: Error) => {
       if (error) {
         return console.error(error);
       } else {
+        await connectToDatabase();
         return console.info(`Server running on ${PORT} [${NODE_ENV}]`);
       }
     });

@@ -16,7 +16,7 @@ export const fetchSearch = async ({ query }: { query: string }) => {
 
 export const fetchSearchQuery = async ({ query }: { query: string }) => {
   try {
-    const data = await (await fetch(`/api/search?s=${query}`)).json();
+    const data = await (await fetch(`/api/v2/crypto?q=${query}`)).json();
     return data;
   } catch (err) {
     if (isApiError(err)) {
