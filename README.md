@@ -2,7 +2,7 @@
 
 Projects build with [Next.js](https://nextjs.org/)
 
-- Demo on Vercel - [trading-mode.vercel.app](https://trading-mode.vercel.app/)
+- Demo on Heroku - [trading-mode.herokuapp.com](https://trading-mode.herokuapp.com/)
 
 ## Quick Start Guide
 
