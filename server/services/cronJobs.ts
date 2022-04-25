@@ -9,29 +9,22 @@ type CryptoPrice = {
 };
 
 export default () => {
-  // cronTest();
-  // cronFear();
-  // cronPrice();
-  // cron.schedule("0 0 */3 * * *", async () => {
-  //   cronPrice().then(() => console.log("success send email"));
-  // });
-  // cron.schedule("0 0 */5 * * *", async () => {
-  //   cronFear().then(() => console.log("success send email"));
-  // });
-  //test
-  cron.schedule("0 */1 * * * *", () => {
-    cronTest();
-    console.log("1 minute");
+  cron.schedule("0 0 */3 * * *", async () => {
+    cronPrice().then(() => console.log("success update price"));
   });
-  // cron.schedule("*/15 * * * * *", () => {
-  //   // cronTest();
-  //   console.log("15");
+  cron.schedule("0 0 */5 * * *", async () => {
+    cronFear().then(() => console.log("success update fear"));
+  });
+
+  //test
+  // cron.schedule("0 */1 * * * *", () => {
+  //   cronTest();
+  //   console.log("1 minute");
   // });
 };
 
 async function cronTest() {
   console.log("test work");
-  await FearGread.updateOne({ $set: { value: 23 } });
 }
 
 async function cronPrice() {
