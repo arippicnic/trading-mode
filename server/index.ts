@@ -1,10 +1,12 @@
 import "dotenv/config.js";
 import express from "express";
 import next from "next";
+import compression from "compression";
 import helmet from "helmet";
 import cors from "cors";
 
 import connectToDatabase from "./services/db";
+import cronJobs from "./services/cronJobs";
 import routes from "./routes";
 
 const { NODE_ENV, PORT } = process.env;
@@ -22,16 +24,18 @@ app.prepare().then(() => {
   );
 
   server.use(cors());
+  server.use(compression());
   server.use(express.json());
   server.use(express.urlencoded({ extended: true }));
 
-  server.use("/api/v2", routes);
+  server.use("/api", routes);
 
   server.get("*", (req, res) => {
     return handler(req, res);
   });
 
   startServer();
+  cronJobs();
 
   function startServer() {
     server.listen(PORT, async (error?: Error) => {

@@ -12,16 +12,16 @@
     "build": "concurrently \"npm run clean\" \"sleep 5 && next build && tsc --project tsconfig.server.json\"",
     "start": "node ./buildServer/index.js",
     "lint": "next lint",
-    "copy": "copyfiles --flat src/pages/api/_cache/_data/info.json src/pages/api/_cache",
-    "clean": "rimraf node_modules/.cache .next src/pages/api/_cache/info.json buildServer && npm run copy"
+    "clean": "rimraf node_modules/.cache .next buildServer"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^3.2.3",
     "autoprefixer": "^10.4.4",
     "classnames": "^2.3.1",
+    "compression": "^1.7.4",
     "concurrently": "^7.1.0",
-    "copyfiles": "^2.4.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
@@ -30,7 +30,6 @@
     "joi": "^17.6.0",
     "mongoose": "^6.3.1",
     "next": "^12.1.5",
-    "next-connect": "^0.12.2",
     "next-themes": "^0.1.1",
     "nextjs-progressbar": "^0.0.14",
     "node-cron": "^3.0.0",
@@ -44,6 +43,8 @@
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
+    "@types/async": "^3.2.12",
+    "@types/compression": "^1.7.2",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.25",

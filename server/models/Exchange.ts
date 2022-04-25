@@ -8,7 +8,7 @@ export type ExchangeTypeObject = {
 export interface ExchangeType extends ExchangeTypeObject, Document {}
 
 const exchangeSchema = new Schema<ExchangeType>({
-  name: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
   symbol: { type: String, required: true, unique: true },
   tradingview_symbol: { type: String, required: true, unique: true },
 });
