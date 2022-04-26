@@ -30,7 +30,7 @@ const Items: React.FC<{ data: CryptoResults; lenght: number }> = ({ data, lenght
         </>
       );
     }
-    return <></>;
+    return <main></main>;
   };
   useEffect(() => {
     setTimeout(() => {

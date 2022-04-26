@@ -65,3 +65,7 @@ export const perc2color = (perc: number) => {
   var h = r * 0x10000 + g * 0x100 + b * 0x1;
   return "#" + ("000000" + h.toString(16)).slice(-6);
 };
+
+export const capitaliz = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};

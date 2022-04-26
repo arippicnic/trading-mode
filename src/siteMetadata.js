@@ -1,9 +1,8 @@
 const siteMetadata = {
   name: "Trading Mode",
-  siteUrl: process.env.HOST,
-  description: "Tradingview price tracker IDR",
+  description: "Tradingview Price Tracker",
   author: "PicnicLab",
-  authorUrl: "https://nextjs.org/",
+  authorUrl: "https://github.com/arippicnic/trading-mode",
   githubUrl: "https://github.com/arippicnic/trading-mode",
   language: "id-ID",
   defaultTheme: "light",

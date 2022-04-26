@@ -13,7 +13,7 @@ const Items: React.FC<{ data: CryptoResults; scren: SrenMode }> = ({ data, scren
       "autosize": true,
       "symbol": "${`BINANCE:${symbol}USDT`}",
       "interval": "${time}",
-      "timezone": "Asia/Singapore",
+      "timezone": "Asia/Jakarta",
       "theme": "${theme}",
       "style": "1",
       "locale": "id",

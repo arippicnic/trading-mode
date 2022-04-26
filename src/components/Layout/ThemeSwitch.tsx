@@ -13,7 +13,6 @@ const ThemeSwitch: React.FC = () => {
         {...toltipDatas}
         aria-label="Toggle Dark Mode"
         type="button"
-        className="mt-1"
         onClick={() => setTheme(theme === "dark" || resolvedTheme === "dark" ? "light" : "dark")}
       >
         <svg id="Capa_1" viewBox="0 0 512 512" width="20" height="20" xmlns="http://www.w3.org/2000/svg">

@@ -9,13 +9,14 @@ import Logo from "@/styles/logo.svg";
 import ThemeSwitch from "./ThemeSwitch";
 import siteMetadata from "@/siteMetadata";
 import Link from "@/components/Link";
-import Button from "@/components/Button";
+import Tooltip, { isToltip } from "@/components/Tooltip";
 import Modal from "@/components/Modal";
 import HeaderLinks from "./HeaderLinks";
 
 const Header: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const pageCrypto = useRouter().pathname;
+  const toltipData = isToltip({ name: "Open Source", loop: false });
 
   return (
     <>
@@ -50,12 +51,12 @@ const Header: React.FC = () => {
               <HeaderLinks mobileMode={true} />
             </Modal>
           </div>
-          <Link href={siteMetadata.githubUrl} className="hidden sm:block ml-8">
-            <Button className="flex items-center text-sm">
-              <BsGithub className="text-sm sm:text-sm md:text-md lg:text-xl mr-2" />
-              <span>Open Source</span>
-            </Button>
-          </Link>
+          <div>
+            <Link href={siteMetadata.githubUrl} className="hidden sm:block ml-8">
+              <BsGithub {...toltipData} className="text-sm sm:text-sm md:text-md lg:text-2xl mr-2 text-gray-400" />
+            </Link>
+            <Tooltip id={toltipData["data-for"]} place="bottom" />
+          </div>
         </div>
       </header>
     </>
