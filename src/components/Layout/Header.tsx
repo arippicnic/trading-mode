@@ -53,7 +53,7 @@ const Header: React.FC = () => {
           </div>
           <div>
             <Link href={siteMetadata.githubUrl} className="hidden sm:block ml-8">
-              <BsGithub {...toltipData} className="text-2xl mr-2 text-gray-400" />
+              <BsGithub {...toltipData} className="text-2xl text-gray-400" />
             </Link>
             <Tooltip id={toltipData["data-for"]} place="bottom" />
           </div>
