@@ -2,6 +2,7 @@ import cron from "node-cron";
 import async from "async";
 
 import PriceConverter from "../models/PriceConverter";
+import CryptoUpdate, { CryptoUpdateType, CryptoUpdateTypeStatus } from "../models/CryptoUpdate";
 import FearGread, { FearGreadType } from "../models/FearGread";
 
 type CryptoPrice = {
@@ -15,16 +16,45 @@ export default () => {
   cron.schedule("0 0 */5 * * *", async () => {
     cronFear().then(() => console.log("success update fear"));
   });
+  cron.schedule("0 */5 * * * *", async () => {
+    cronFear().then(() => console.log("success update crypto"));
+  });
 
   //test
   // cron.schedule("0 */1 * * * *", () => {
-  //   cronTest();
   //   console.log("1 minute");
   // });
 };
 
-async function cronTest() {
-  console.log("test work");
+async function cronCrypto() {
+  const fethData = await (await fetch(`https://api.coincap.io/v2/assets?limit=300`)).json();
+  if (!fethData) return;
+  const result = fethData.data
+    .sort((a: { changePercent24Hr: number }, b: { changePercent24Hr: number }) => b.changePercent24Hr - a.changePercent24Hr)
+    .slice(0, 20);
+  let nomor = 0;
+  const foundCurrency = await CryptoUpdate.find().exec();
+  let stausData: CryptoUpdateTypeStatus = "UP";
+  async.eachSeries(
+    result,
+    function updateObject(obj: CryptoUpdateType, done) {
+      nomor = nomor + 1;
+
+      if (foundCurrency.length !== 0) {
+        const x = foundCurrency.filter((x) => x.id === obj.id);
+        stausData = x.length === 0 ? "UP" : x[0]._no === nomor ? "=" : x[0]._no > nomor ? "UP" : "DOWN";
+        CryptoUpdate.deleteOne({ _no: nomor }, function (err) {
+          if (err) return err;
+        });
+      }
+
+      const data: CryptoUpdateType = { ...obj, _no: nomor, status: stausData };
+      CryptoUpdate.create(data, done);
+    },
+    function allDone(err) {
+      console.log(err);
+    }
+  );
 }
 
 async function cronPrice() {

@@ -3,6 +3,7 @@ import express, { Request, Response } from "express";
 import Crypto from "../models/Crypto";
 import PriceConverter from "../models/PriceConverter";
 import FearGread from "../models/FearGread";
+import CryptoUpdate from "../models/CryptoUpdate";
 import { OK, BAD_REQUEST, INTERNAL, NOT_FOUND } from "../services/responses";
 import { querySchema } from "../validate";
 
@@ -15,6 +16,15 @@ router.get("/", async (req: Request, res: Response) => {
 
     const found = await Crypto.findOne({ symbol: `${query.toUpperCase()}USDT` }).exec();
     if (!found) return NOT_FOUND(res, "Can not find currency");
+    return OK(res, found);
+  } catch (err) {
+    console.log(err);
+    return INTERNAL(res);
+  }
+});
+router.get("/cryptos", async (req: Request, res: Response) => {
+  try {
+    const found = await CryptoUpdate.find().exec();
     return OK(res, found);
   } catch (err) {
     console.log(err);

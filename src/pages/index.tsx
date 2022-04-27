@@ -17,10 +17,8 @@ const Home: NextPage<{ currenys: CurrencyApiType[] }> = ({ currenys }) => {
 export async function getServerSideProps({ req, res }: { req: NextApiRequest; res: NextApiResponse }) {
   res.setHeader("Cache-Control", "public, s-maxage=10, stale-while-revalidate=5");
   try {
-    const fethData = await (await fetch(`https://api.coincap.io/v2/assets?limit=300`)).json();
-    const result = fethData.data
-      .sort((a: CurrencyApiType, b: CurrencyApiType) => b.changePercent24Hr - a.changePercent24Hr)
-      .slice(0, 20);
+    const { HOST } = process.env;
+    const result = await (await fetch(`${HOST}api/crypto/cryptos`)).json();
     return {
       props: {
         currenys: result,

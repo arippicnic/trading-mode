@@ -20,7 +20,7 @@ const Header: React.FC<CryptoCardPropType> = ({ crypto }) => {
           <div className={cn(styles.card, "m-2")}>
             <div className="p-3">
               <h2 className="text-lg mb-2">
-                {data.symbol}
+                <span className="text-gray-600 dark:text-gray-100">{data.symbol}</span>
                 <button {...toltipData} className="align-top float-right pt-1">
                   <BsXLg
                     onClick={() => dispatch!({ type: "REMOVE", value: data._id })}

@@ -21,6 +21,8 @@ export type CryptoStateType = {
 export type CurrencyApiType = {
   changePercent24Hr: number;
   rank: number;
+  _no: number;
+  status: string;
 } & Crypto;
 
 export type CryptoPrice = {

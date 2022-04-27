@@ -79,7 +79,7 @@ const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
             <thead>
               <tr className={cn(tbl_th, "text-left text-xs font-semibold uppercase tracking-wider text-gray-400")}>
                 <th className="pl-3 lg:pl-4 py-4">Name</th>
-                <th className={cn("text-right", widthTable)}>Price IDR</th>
+                <th className={cn("text-right", widthTable)}>Price USD</th>
                 <th className={cn("text-right", widthTable)}>Ranking</th>
                 <th className="text-right pr-3 lg:pr-4">24 Hour</th>
               </tr>
@@ -96,7 +96,6 @@ const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
                   <TableList
                     activeStar={handleFilterStar(data.id)}
                     data={data}
-                    index={i}
                     widthWindow={width!}
                     handleAddCrypto={handleAddCrypto}
                   />
