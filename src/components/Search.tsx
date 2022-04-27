@@ -24,11 +24,12 @@ const Search: React.FC = () => {
 
   const handleFocus = () => setActive(true);
   const handleClickInside = (item: CurrencyApiType) => (e: React.MouseEvent<HTMLElement>) => {
+    setQueryActice(true);
     setActive(false);
     handleSubmit(item);
   };
   const handleQuery = () => {
-    if (!queryActice && results.length) {
+    if (!queryActice && results?.length) {
       setQuery(results[cursor].name.toLowerCase());
     }
     setQueryActice(true);
@@ -39,13 +40,18 @@ const Search: React.FC = () => {
     setQuery(event.target.value);
   };
 
+  const handleMouseEnter = (item: number) => {
+    setQueryActice(false);
+    setCursor(item);
+  };
+
   const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "ArrowUp" && cursor > 0) {
       setQueryActice(false);
       setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
-    } else if (e.key === "ArrowDown" && cursor < results.length - 1) {
+    } else if (e.key === "ArrowDown" && cursor < results?.length - 1) {
       setQueryActice(false);
-      setCursor((prevState) => (prevState < results.length - 1 ? prevState + 1 : prevState));
+      setCursor((prevState) => (prevState < results?.length - 1 ? prevState + 1 : prevState));
     } else if (e.key === "Backspace") {
       handleQuery();
     } else if (e.key === "Enter") {
@@ -86,12 +92,6 @@ const Search: React.FC = () => {
     fetchAPI();
   };
 
-  useEffect(() => {
-    if (inputRef?.current && inputRef.current.value) {
-      inputRef.current.selectionStart = inputRef.current.value.length;
-      inputRef.current.selectionEnd = inputRef.current.value.length;
-    }
-  });
   useOutside({ ref: wrapperRef, status: setActive });
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -133,7 +133,7 @@ const Search: React.FC = () => {
                     i === cursor ? "bg-[color:var(--color-primary-dark)]" : ""
                   } `}
                   onClick={handleClickInside(item)}
-                  onMouseEnter={() => setCursor(i)}
+                  onMouseEnter={() => handleMouseEnter(i)}
                 >
                   <div className="search-result-click flex items-center justify-between text-sm">
                     <div>

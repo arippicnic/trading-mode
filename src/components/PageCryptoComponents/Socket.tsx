@@ -20,14 +20,14 @@ const TredingSocket: React.FC<{ data: CryptoResults }> = ({ data }) => {
       }
       setFirst(false);
     }
-  });
+  }, [isFirstRealodPair]);
 
   useEffect(() => {
     const price = priceStrem(isStrem!, data);
     if (price !== 0) {
       setPrice(price);
     }
-  });
+  }, [isStrem]);
   return <span>{formartPrice(isPrice * pair)}</span>;
 };
 export default TredingSocket;
