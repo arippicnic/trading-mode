@@ -1,5 +1,6 @@
 import cron from "node-cron";
 import async from "async";
+import "dotenv/config.js";
 
 import PriceConverter from "../models/PriceConverter";
 import CryptoUpdate, { CryptoUpdateType, CryptoUpdateTypeStatus } from "../models/CryptoUpdate";
@@ -10,15 +11,17 @@ type CryptoPrice = {
 };
 
 export default () => {
-  cron.schedule("0 0 */3 * * *", async () => {
-    cronPrice().then(() => console.log("success update price"));
-  });
-  cron.schedule("0 0 */5 * * *", async () => {
-    cronFear().then(() => console.log("success update fear"));
-  });
-  cron.schedule("0 */5 * * * *", async () => {
-    cronFear().then(() => console.log("success update crypto"));
-  });
+  if (process.env.NODE_ENV === "production") {
+    cron.schedule("0 0 */3 * * *", async () => {
+      cronPrice().then(() => console.log("success update price"));
+    });
+    cron.schedule("0 0 */5 * * *", async () => {
+      cronFear().then(() => console.log("success update fear"));
+    });
+    cron.schedule("0 */5 * * * *", async () => {
+      cronCrypto().then(() => console.log("success update crypto"));
+    });
+  }
 
   //test
   // cron.schedule("0 */1 * * * *", () => {
