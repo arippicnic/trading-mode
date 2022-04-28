@@ -4,6 +4,7 @@ import FearGreadIndex, { FearType } from "@/components/PageTradeComponents/FearG
 import PageTrade from "@/components/PageTradeComponents";
 import Search from "@/components/Search";
 import { isApiError } from "@/services/general";
+import siteMeta from "@/siteMetadata";
 
 const Trade: NextPage<{ contentFear: FearType }> = ({ contentFear }) => {
   return (
@@ -18,8 +19,7 @@ const Trade: NextPage<{ contentFear: FearType }> = ({ contentFear }) => {
 export async function getServerSideProps({ req, res }: { req: NextApiRequest; res: NextApiResponse }) {
   res.setHeader("Cache-Control", "public, s-maxage=10, stale-while-revalidate=59");
   try {
-    const { HOST } = process.env;
-    const fear = await (await fetch(`${HOST}api/crypto/fear_gread`)).json();
+    const fear = await (await fetch(`${siteMeta.siteUrl}/api/crypto/fear_gread`)).json();
     return {
       props: {
         title: "Fear Gred Index",

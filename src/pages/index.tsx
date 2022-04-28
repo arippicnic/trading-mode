@@ -4,6 +4,7 @@ import PageIndex from "@/components/PageIndexComponents";
 import { CurrencyApiType } from "@/types";
 import Search from "@/components/Search";
 import { isApiError } from "@/services/general";
+import siteMeta from "@/siteMetadata";
 
 const Home: NextPage<{ currenys: CurrencyApiType[] }> = ({ currenys }) => {
   return (
@@ -17,8 +18,7 @@ const Home: NextPage<{ currenys: CurrencyApiType[] }> = ({ currenys }) => {
 export async function getServerSideProps({ req, res }: { req: NextApiRequest; res: NextApiResponse }) {
   res.setHeader("Cache-Control", "public, s-maxage=10, stale-while-revalidate=5");
   try {
-    const { HOST } = process.env;
-    const result = await (await fetch(`${HOST}api/crypto/cryptos`)).json();
+    const result = await (await fetch(`${siteMeta.siteUrl}/api/crypto/cryptos`)).json();
     return {
       props: {
         currenys: result,

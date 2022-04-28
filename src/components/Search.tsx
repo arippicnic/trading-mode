@@ -41,7 +41,7 @@ const Search: React.FC = () => {
   };
 
   const handleMouseEnter = (item: number) => {
-    setQueryActice(false);
+    setQueryActice(true);
     setCursor(item);
   };
 

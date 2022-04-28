@@ -2,7 +2,7 @@ import { isApiError } from "./general";
 
 export const fetchSearch = async ({ query }: { query: string }) => {
   try {
-    const data = query ? await (await fetch(`/api/crypto/search?q=${query}`)).json() : [];
+    const data = query ? await (await fetch(`/api/v2/crypto/search?q=${query}`)).json() : [];
     return data;
   } catch (err) {
     if (isApiError(err)) {
@@ -16,7 +16,7 @@ export const fetchSearch = async ({ query }: { query: string }) => {
 
 export const fetchSearchQuery = async ({ query }: { query: string }) => {
   try {
-    const data = await (await fetch(`/api/crypto?q=${query}`)).json();
+    const data = await (await fetch(`/api/v2/crypto?q=${query}`)).json();
     return data;
   } catch (err) {
     if (isApiError(err)) {

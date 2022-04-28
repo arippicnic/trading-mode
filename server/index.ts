@@ -9,8 +9,8 @@ import connectToDatabase from "./services/db";
 import cronJobs from "./services/cronJobs";
 import routes from "./routes";
 
-const { NODE_ENV, PORT } = process.env;
-const dev = NODE_ENV !== "production";
+const { NEXT_PUBLIC_NODE_ENV, PORT } = process.env;
+const dev = NEXT_PUBLIC_NODE_ENV !== "production";
 const app = next({ dev });
 const handler = app.getRequestHandler();
 
@@ -43,7 +43,7 @@ app.prepare().then(() => {
         return console.error(error);
       } else {
         await connectToDatabase();
-        return console.info(`Server running on ${PORT} [${NODE_ENV}]`);
+        return console.info(`Server running on ${PORT} [${NEXT_PUBLIC_NODE_ENV}]`);
       }
     });
   }

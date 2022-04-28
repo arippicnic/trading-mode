@@ -4,7 +4,7 @@ import siteMetadata from "@/siteMetadata";
 import { useRouter } from "next/router";
 import { capitaliz } from "@/services/general";
 
-const { description, name, themeColor, author, authorUrl } = siteMetadata;
+const { description, name, themeColor, author, authorUrl, siteUrl } = siteMetadata;
 
 const RenderArticel = ({ title }: { title: string }) => (
   <Head>
@@ -18,7 +18,7 @@ const RenderArticel = ({ title }: { title: string }) => (
     <meta content="summary_large_image" name="twitter:card" />
     <meta content="website" property="og:type" />
     <meta content={name} property="og:site_name" />
-    <meta content={useRouter().pathname} property="og:url" />
+    <meta content={siteUrl + useRouter().pathname} property="og:url" />
     <meta name="content_author" content={author} />
     <meta name="content_author_site" content={authorUrl} />
 

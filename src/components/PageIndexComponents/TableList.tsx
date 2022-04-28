@@ -4,6 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 import { CurrencyApiType } from "@/types";
 import { formartPrice, toFixNumber } from "@/services/general";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
+import { IoReorderTwoOutline } from "react-icons/io5";
 
 interface TypeTableList {
   data: CurrencyApiType;
@@ -20,7 +21,7 @@ const TableList: React.FC<TypeTableList> = ({ data, widthWindow, handleAddCrypto
     ) : status === "UP" ? (
       <BsArrowUp className="text-green-500" />
     ) : (
-      <span className="ml-3"></span>
+      <IoReorderTwoOutline className="text-gray-400" />
     );
 
   return (
@@ -38,7 +39,7 @@ const TableList: React.FC<TypeTableList> = ({ data, widthWindow, handleAddCrypto
       </td>
       <td className={cn("text-right text-gray-600 dark:text-gray-400", widthTable)}>{formartPrice(priceUsd)}</td>
       <td className={cn("text-right text-gray-600 dark:text-gray-400", widthTable)}>{rank}</td>
-      <td className="pr-3 lg:pr-4 text-right float-right flex items-center">
+      <td className="pr-3 lg:pr-4 float-right flex items-center justify-items-center">
         <div className={changePercent24Hr > 0 ? "text-green-500" : "text-red-500"}>{toFixNumber(changePercent24Hr)}%</div>
         <span className="ml-3">{iconStatus}</span>
       </td>

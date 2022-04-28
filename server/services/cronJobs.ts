@@ -11,7 +11,7 @@ type CryptoPrice = {
 };
 
 export default () => {
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NEXT_PUBLIC_NODE_ENV === "production") {
     cron.schedule("0 0 */3 * * *", async () => {
       cronPrice().then(() => console.log("success update price"));
     });

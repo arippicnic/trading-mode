@@ -1,4 +1,4 @@
-import type { AppProps } from "next/app";
+import type { AppProps, AppContext } from "next/app";
 import { ThemeProvider } from "next-themes";
 import NextNProgress from "nextjs-progressbar";
 
@@ -7,7 +7,10 @@ import siteMeta from "@/siteMetadata";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 
-const App = ({ Component, pageProps }: AppProps) => {
+interface AppInfoType {
+  price: number;
+}
+const App = ({ Component, pageProps, appInfo }: AppProps & { appInfo: AppInfoType }) => {
   return (
     <ThemeProvider attribute="class" defaultTheme={siteMeta.defaultTheme}>
       <SEO />
@@ -17,6 +20,13 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Layout>
     </ThemeProvider>
   );
+};
+
+App.getInitialProps = async (context: AppContext) => {
+  const appInfo = await (await fetch(`${siteMeta.siteUrl}/api/user`)).json();
+
+  const pageProps = context.Component.getInitialProps ? await context.Component.getInitialProps(context.ctx) : {};
+  return { pageProps, appInfo };
 };
 
 export default App;
