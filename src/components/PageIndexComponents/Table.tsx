@@ -4,9 +4,10 @@ import TableList from "./TableList";
 import { CryptoActionType, CryptoStateType, CurrencyApiType } from "@/types";
 import useToastContext from "@/hooks/useToasts";
 import styles from "@/styles/Main.module.scss";
-import useWindowDimensions from "@/hooks/useWindowDimensions";
+import useWindowDimensions from "@/hooks/useDeviceSize";
 import { radomStr } from "@/services/general";
 import { fetchSearchQuery } from "@/services/fetchApi";
+import { useAppContext } from "@/contexts/AppContext";
 
 type TableType = {
   currenys: CurrencyApiType[];
@@ -15,6 +16,7 @@ type TableType = {
 };
 
 const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
+  const { priceInfo } = useAppContext();
   const addToast = useToastContext();
   const { width } = useWindowDimensions();
   const widthTable = width! < 637 ? "hidden" : "";
@@ -79,7 +81,7 @@ const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
             <thead>
               <tr className={cn(tbl_th, "text-left text-xs font-semibold uppercase tracking-wider text-gray-400")}>
                 <th className="pl-3 lg:pl-4 py-4">Name</th>
-                <th className={cn("text-right", widthTable)}>Price USD</th>
+                <th className={cn("text-right", widthTable)}>Price {priceInfo!.symbol}</th>
                 <th className={cn("text-right", widthTable)}>Ranking</th>
                 <th className="text-right pr-3 lg:pr-4">24 Hour</th>
               </tr>
@@ -96,7 +98,7 @@ const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
                   <TableList
                     activeStar={handleFilterStar(data.id)}
                     data={data}
-                    widthWindow={width!}
+                    widthWindow={widthTable}
                     handleAddCrypto={handleAddCrypto}
                   />
                 </tr>

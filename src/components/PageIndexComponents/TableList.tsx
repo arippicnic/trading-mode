@@ -5,16 +5,19 @@ import { CurrencyApiType } from "@/types";
 import { formartPrice, toFixNumber } from "@/services/general";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 import { IoReorderTwoOutline } from "react-icons/io5";
+import { useAppContext } from "@/contexts/AppContext";
 
 interface TypeTableList {
   data: CurrencyApiType;
-  widthWindow: number;
+  widthWindow: "hidden" | "";
   handleAddCrypto: (item: CurrencyApiType) => (e: React.MouseEvent<HTMLElement>) => void;
   activeStar: boolean;
 }
+
 const TableList: React.FC<TypeTableList> = ({ data, widthWindow, handleAddCrypto, activeStar }) => {
+  const { priceInfo } = useAppContext();
   const { name, priceUsd, changePercent24Hr, symbol, rank, _no, status } = data;
-  const widthTable = widthWindow < 637 ? "hidden" : "";
+
   const iconStatus =
     status === "DOWN" ? (
       <BsArrowDown className="text-red-500" />
@@ -37,11 +40,15 @@ const TableList: React.FC<TypeTableList> = ({ data, widthWindow, handleAddCrypto
           {name} <span className="text-gray-400">{symbol}</span>
         </span>
       </td>
-      <td className={cn("text-right text-gray-600 dark:text-gray-400", widthTable)}>{formartPrice(priceUsd)}</td>
-      <td className={cn("text-right text-gray-600 dark:text-gray-400", widthTable)}>{rank}</td>
-      <td className="pr-3 lg:pr-4 float-right flex items-center justify-items-center">
-        <div className={changePercent24Hr > 0 ? "text-green-500" : "text-red-500"}>{toFixNumber(changePercent24Hr)}%</div>
-        <span className="ml-3">{iconStatus}</span>
+      <td className={cn("text-right text-gray-600 dark:text-gray-400", widthWindow)}>
+        {formartPrice(priceUsd * priceInfo!.value)}
+      </td>
+      <td className={cn("text-right text-gray-600 dark:text-gray-400", widthWindow)}>{rank}</td>
+      <td className="pr-3 lg:pr-4 text-right">
+        <div className="float-right flex items-center justify-items-center">
+          <div className={changePercent24Hr > 0 ? "text-green-500" : "text-red-500"}>{toFixNumber(changePercent24Hr)}%</div>
+          <span className="ml-3">{iconStatus}</span>
+        </div>
       </td>
     </>
   );

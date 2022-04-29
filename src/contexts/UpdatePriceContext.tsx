@@ -4,7 +4,6 @@ import { urlSplit } from "@/services/general";
 
 type ContextProps = {
   isFirstRealodPrice: CryptoPrice;
-  isFirstRealodPair: number;
 };
 const UpdatePriceContext = createContext<Partial<ContextProps>>({});
 
@@ -23,7 +22,7 @@ export const UpdatePriceProvider: React.FC<{ children: React.ReactNode; data: Cr
         for (const ev of priceData.coin) {
           obj = { [ev.id]: ev.priceUsd, ...obj };
         }
-        setFirstRealod({ isFirstRealodPair: priceData.price, isFirstRealodPrice: obj });
+        setFirstRealod({ isFirstRealodPrice: obj });
       }
     };
     fetchData();

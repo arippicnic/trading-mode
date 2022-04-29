@@ -4,13 +4,14 @@ import { formartPrice, priceStrem } from "@/services/general";
 import { CryptoResults } from "@/types";
 import { useStremContext } from "@/contexts/StreamContext";
 import { useUpdatePriceContext } from "@/contexts/UpdatePriceContext";
+import { useAppContext } from "@/contexts/AppContext";
 
 const TredingSocket: React.FC<{ data: CryptoResults }> = ({ data }) => {
-  const { isFirstRealodPair, isFirstRealodPrice } = useUpdatePriceContext();
+  const { isFirstRealodPrice } = useUpdatePriceContext();
+  const { priceInfo } = useAppContext();
   const [isPrice, setPrice] = useState(0);
   const [isFirst, setFirst] = useState(true);
   const { isStrem } = useStremContext();
-  const pair = isFirstRealodPair ? isFirstRealodPair : 0;
 
   useEffect(() => {
     if (isFirst && isFirstRealodPrice) {
@@ -20,7 +21,7 @@ const TredingSocket: React.FC<{ data: CryptoResults }> = ({ data }) => {
       }
       setFirst(false);
     }
-  }, [isFirstRealodPair]);
+  }, []);
 
   useEffect(() => {
     const price = priceStrem(isStrem!, data);
@@ -28,6 +29,6 @@ const TredingSocket: React.FC<{ data: CryptoResults }> = ({ data }) => {
       setPrice(price);
     }
   }, [isStrem]);
-  return <span>{formartPrice(isPrice * pair)}</span>;
+  return <span>{formartPrice(isPrice * priceInfo!.value)}</span>;
 };
 export default TredingSocket;

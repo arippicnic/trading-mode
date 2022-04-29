@@ -7,8 +7,9 @@ const router = express.Router();
 
 router.get("/", async (req: Request, res: Response) => {
   try {
-    const foundCurrency = await PriceConverter.findOne({ symbol: "rp" }).exec();
-    return OK(res, { price: foundCurrency?.value });
+    const foundCurrency = await PriceConverter.findOne({ symbol: "IDR" }).exec();
+    const result = { priceInfo: foundCurrency };
+    return OK(res, result);
   } catch (err) {
     console.log(err);
     return INTERNAL(res);

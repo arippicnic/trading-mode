@@ -6,25 +6,24 @@ import "@/styles/main.scss";
 import siteMeta from "@/siteMetadata";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
+import { AppProvider, ContextPropsApp } from "@/contexts/AppContext";
 
-interface AppInfoType {
-  price: number;
-}
-const App = ({ Component, pageProps, appInfo }: AppProps & { appInfo: AppInfoType }) => {
+const App = ({ Component, pageProps, appInfo }: AppProps & { appInfo: ContextPropsApp }) => {
   return (
     <ThemeProvider attribute="class" defaultTheme={siteMeta.defaultTheme}>
       <SEO />
       <NextNProgress options={{ showSpinner: false }} />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <AppProvider appInfo={appInfo}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AppProvider>
     </ThemeProvider>
   );
 };
 
 App.getInitialProps = async (context: AppContext) => {
   const appInfo = await (await fetch(`${siteMeta.siteUrl}/api/user`)).json();
-
   const pageProps = context.Component.getInitialProps ? await context.Component.getInitialProps(context.ctx) : {};
   return { pageProps, appInfo };
 };

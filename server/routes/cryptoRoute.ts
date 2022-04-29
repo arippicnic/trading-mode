@@ -1,7 +1,6 @@
 import express, { Request, Response } from "express";
 
 import Crypto from "../models/Crypto";
-import PriceConverter from "../models/PriceConverter";
 import FearGread from "../models/FearGread";
 import CryptoUpdate from "../models/CryptoUpdate";
 import { OK, BAD_REQUEST, INTERNAL, NOT_FOUND } from "../services/responses";
@@ -55,8 +54,7 @@ router.get("/price", async (req: Request, res: Response) => {
     const URLCOICAP = `https://api.coincap.io/v2/assets?ids=${query}`;
     const found = await (await fetch(URLCOICAP)).json();
     if (!found) return NOT_FOUND(res, "Can not find currency");
-    const foundCurrency = await PriceConverter.findOne({ symbol: "rp" }).exec();
-    return OK(res, { price: foundCurrency?.value, coin: found.data });
+    return OK(res, { coin: found.data });
   } catch (err) {
     console.log(err);
     return INTERNAL(res);
