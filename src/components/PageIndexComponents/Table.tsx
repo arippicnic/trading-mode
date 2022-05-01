@@ -36,7 +36,7 @@ const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
     }
 
     if (state.crypto.length === 3) {
-      addToast("Max crypto 3");
+      addToast("Currency maximal 3");
       return;
     }
 

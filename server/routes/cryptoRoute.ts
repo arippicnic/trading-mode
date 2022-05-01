@@ -14,7 +14,7 @@ router.get("/", async (req: Request, res: Response) => {
     if (querySchema({ query })) return BAD_REQUEST(res, querySchema({ query }));
 
     const found = await Crypto.findOne({ symbol: `${query.toUpperCase()}USDT` }).exec();
-    if (!found) return NOT_FOUND(res, "Can not find currency");
+    if (!found) return NOT_FOUND(res, "Couldn't find currency");
     return OK(res, found);
   } catch (err) {
     console.log(err);
@@ -38,7 +38,7 @@ router.get("/search", async (req: Request, res: Response) => {
 
     const URLCOICAP = `https://api.coincap.io/v2/assets?search=${query.toLowerCase()}&limit=5`;
     const found = await (await fetch(URLCOICAP)).json();
-    if (!found) return NOT_FOUND(res, "Can not find currency");
+    if (!found) return NOT_FOUND(res, "Couldn't find currency");
     return OK(res, found.data);
   } catch (err) {
     console.log(err);
@@ -53,7 +53,7 @@ router.get("/price", async (req: Request, res: Response) => {
 
     const URLCOICAP = `https://api.coincap.io/v2/assets?ids=${query}`;
     const found = await (await fetch(URLCOICAP)).json();
-    if (!found) return NOT_FOUND(res, "Can not find currency");
+    if (!found) return NOT_FOUND(res, "Couldn't find currency");
     return OK(res, { coin: found.data });
   } catch (err) {
     console.log(err);

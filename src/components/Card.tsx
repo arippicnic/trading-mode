@@ -14,7 +14,7 @@ const Header: React.FC<CryptoCardPropType> = ({ crypto }) => {
   const toltipData = isToltip({ name: "Remove", loop: true });
   const { dispatch } = useCryptoContext();
   return (
-    <ul className="py-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <ul className="py-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
       {crypto.map((data) => (
         <li key={data._id}>
           <div className={cn(styles.card, "m-2")}>

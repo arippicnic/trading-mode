@@ -15,31 +15,29 @@ const Items: React.FC<{ data: CryptoResults; lenght: number }> = ({ data, lenght
   const RenderContent = () => {
     if (isContent) {
       return (
-        <>
-          <div className={trv_price}>
-            <div className="text-white border border-wa-500 text-xs sm:text-xs md:text-sm lg:text-sm bg-black rounded-full p-1 px-3">
-              <div className="flex">
-                <span className="mr-2">{data.symbol}IDR</span>
-                <TradingSocket data={data} />
-              </div>
-            </div>
-          </div>
-          <div className={trv_closed}>
-            <div className="bg-white dark:bg-[#131722] p-3 pl-10"></div>
-          </div>
-        </>
+        <div className={trv_closed}>
+          <div className="bg-white dark:bg-[#131722] p-3 pl-10"></div>
+        </div>
       );
     }
-    return <main></main>;
+    return <span></span>;
   };
   useEffect(() => {
     setTimeout(() => {
       setContent(true);
-    }, 3000);
+    }, 7000);
   }, [isContent, setContent]);
   return (
     <div className={cn(trv, scren, "dark:bg-[#131722]")}>
       <Chart data={data} scren={scren} />
+      <div className={trv_price}>
+        <div className="text-white border border-wa-500 text-xs sm:text-xs md:text-sm lg:text-sm bg-black rounded-full p-1 px-3">
+          <div className="flex">
+            <span className="mr-2">{data.symbol}IDR</span>
+            <TradingSocket data={data} />
+          </div>
+        </div>
+      </div>
       <RenderContent />
     </div>
   );

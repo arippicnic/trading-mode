@@ -66,7 +66,7 @@ const Search: React.FC = () => {
     const { symbol, name, id, priceUsd }: CurrencyApiType = item;
 
     if (state.crypto.length === 3) {
-      addToast("Max crypto 3");
+      addToast("Currency maximal 3");
       return;
     }
     const _id = radomStr();

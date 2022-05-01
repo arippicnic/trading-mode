@@ -26,12 +26,14 @@ const Items: React.FC<{ data: CryptoResults; scren: SrenMode }> = ({ data, scren
   });`;
   useEffect(() => {
     const script = document.createElement("script");
-    script.async = true;
     script.innerHTML = srciptData;
     if (!isRef.current) {
       return;
     }
     isRef.current.appendChild(script);
+    return () => {
+      isRef.current?.removeChild(script);
+    };
   }, []);
 
   return (
