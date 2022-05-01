@@ -21,7 +21,7 @@ const TredingSocket: React.FC<{ data: CryptoResults }> = ({ data }) => {
       }
       setFirst(false);
     }
-  }, []);
+  }, [isFirstRealodPrice]);
 
   useEffect(() => {
     const price = priceStrem(isStrem!, data);
