@@ -15,7 +15,7 @@ const Crypto: NextPage = () => {
 
   const RenderContent = () => {
     if (loading) {
-      return <p className="text-center">Load...</p>;
+      return <p className="text-center mt-5">Loading...</p>;
     }
     if (crypto.length === 0) {
       router.push("/");

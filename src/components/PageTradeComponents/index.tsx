@@ -10,7 +10,7 @@ const PageTrade: React.FC = () => {
 
   const RenderContent = () => {
     if (loading) {
-      return <p className="text-center">Loading ...</p>;
+      return <p className="text-center mt-5">Loading...</p>;
     }
     return (
       <>

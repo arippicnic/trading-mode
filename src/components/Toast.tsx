@@ -5,7 +5,7 @@ const Toast: React.FC<{ children: string }> = ({ children }) => {
   return (
     <div className={styles.tots}>
       <div
-        className="items-center py-3 px-4 max-w-md overflow-ellipsis flex items-center  max-w-x bg-blue-600 bg-opacity-20 rounded-lg shadow text-white space-x"
+        className="items-center py-3 px-4 max-w-md overflow-ellipsis flex items-center max-w-x bg-blue-600 bg-opacity-20 rounded-lg shadow text-white"
         role="alert"
       >
         <svg

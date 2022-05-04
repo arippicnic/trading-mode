@@ -2,7 +2,7 @@ import cn from "classnames";
 import { AiFillStar } from "react-icons/ai";
 
 import { CurrencyApiType } from "@/types";
-import { formartPrice, toFixNumber } from "@/services/general";
+import { formartPrice, toFixNumber, truncate } from "@/services/general";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 import { IoReorderTwoOutline } from "react-icons/io5";
 import { useAppContext } from "@/contexts/AppContext";
@@ -37,7 +37,8 @@ const TableList: React.FC<TypeTableList> = ({ data, widthWindow, handleAddCrypto
         </span>
         <span className={cn("pr-2 lg:pr-3 text-center flex item-center text-gray-400", _no > 9 ? "" : "pl-1")}>{_no}</span>
         <span className="text-gray-600 dark:text-gray-100">
-          {name} <span className="text-gray-400">{symbol}</span>
+          {truncate(name, 20)}
+          <span className="pl-2 text-gray-400">{symbol}</span>
         </span>
       </td>
       <td className={cn("text-right text-gray-600 dark:text-gray-400", widthWindow)}>

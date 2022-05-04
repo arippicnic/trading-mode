@@ -1,16 +1,24 @@
 import { CryptoResults, CryptoPrice } from "@/types";
 
-interface ApiError {
+export const isApiError = (
+  x: any
+): x is {
   code: number;
   error: string;
-}
-
-export const isApiError = (x: any): x is ApiError => {
+} => {
   return typeof x.code === "number";
 };
 
 export const formartPrice = (number: number) => {
-  return new Intl.NumberFormat().format(number);
+  const newnumber = Number(number.toFixed(number > 100 ? 0 : 2)).toLocaleString();
+  return newnumber;
+};
+
+export const truncate = (input: string, num: number) => {
+  if (input.length > num) {
+    return input.substring(0, num) + "...";
+  }
+  return input;
 };
 
 export const toFixNumber = (number: number) => {
