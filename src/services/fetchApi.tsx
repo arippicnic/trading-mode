@@ -1,4 +1,19 @@
 import { isApiError } from "./general";
+import siteMeta from "@/siteMetadata";
+
+export const fetchCurrency = async () => {
+  try {
+    const data = await (await fetch(`${siteMeta.siteUrl}/api/crypto/cryptos`)).json();
+    return data;
+  } catch (err) {
+    if (isApiError(err)) {
+      console.log(err.code);
+      return {
+        error: err.code,
+      };
+    }
+  }
+};
 
 export const fetchSearch = async ({ query }: { query: string }) => {
   try {

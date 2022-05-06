@@ -1,20 +1,32 @@
+import { useEffect, useState } from "react";
+
 import { useCryptoContext } from "@/contexts/CryptoContext";
 import Card from "@/components/Card";
 import Table from "@/components/PageIndexComponents/Table";
 import { CurrencyApiType } from "@/types";
+import { fetchCurrency } from "@/services/fetchApi";
 
-const PageIndex: React.FC<{ currenys: CurrencyApiType[] }> = ({ currenys }) => {
+const PageIndex: React.FC = () => {
+  const [currency, setcurrency] = useState<CurrencyApiType[] | null>(null);
   const { state, dispatch } = useCryptoContext();
   const { crypto, loading } = state;
 
+  useEffect(() => {
+    async function fetchAPIcurrency() {
+      const result = await fetchCurrency();
+      setcurrency(result);
+    }
+    fetchAPIcurrency();
+  }, [currency]);
+
   const RenderContent = () => {
-    if (loading) {
+    if (loading || !currency) {
       return <p className="text-center mt-5">Loading...</p>;
     }
     return (
       <>
         <Card crypto={crypto} />
-        <Table currenys={currenys} dispatch={dispatch!} state={state} />
+        <Table currenys={currency!} dispatch={dispatch!} state={state} />
       </>
     );
   };
