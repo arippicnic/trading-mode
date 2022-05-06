@@ -12,17 +12,16 @@ type CryptoPrice = {
 
 export default () => {
   if (process.env.NEXT_PUBLIC_NODE_ENV === "production") {
-    cron.schedule("0 0 */3 * * *", async () => {
+    cron.schedule("0 0 */3 * * *", () => {
       cronPrice().then(() => console.log("success update price"));
     });
-    cron.schedule("0 0 */5 * * *", async () => {
+    cron.schedule("0 */2 * * * *", () => {
       cronFear().then(() => console.log("success update fear"));
     });
-    cron.schedule("0 */5 * * * *", async () => {
+    cron.schedule("0 */5 * * * *", () => {
       cronCrypto().then(() => console.log("success update crypto"));
     });
   }
-
   //test
   // cron.schedule("0 */1 * * * *", () => {
   //   console.log("1 minute");
