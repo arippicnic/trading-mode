@@ -15,7 +15,7 @@ export default () => {
     cron.schedule("0 0 */3 * * *", () => {
       cronPrice().then(() => console.log("success update price"));
     });
-    cron.schedule("0 */2 * * * *", () => {
+    cron.schedule("0 0 */2 * * *", () => {
       cronFear().then(() => console.log("success update fear"));
     });
     cron.schedule("0 */5 * * * *", () => {
