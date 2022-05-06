@@ -17,7 +17,7 @@ const PageIndex: React.FC = () => {
       setcurrency(result);
     }
     fetchAPIcurrency();
-  }, [currency]);
+  }, []);
 
   const RenderContent = () => {
     if (loading || !currency) {
