@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import { useCryptoContext } from "@/contexts/CryptoContext";
-import Card from "@/components/Card";
-import Table from "@/components/PageIndexComponents/Table";
-import { CurrencyApiType } from "@/types";
-import { fetchCurrency } from "@/services/fetchApi";
+import Card from "@components/Card";
+import Table from "./Table";
+import { useCryptoContext } from "@contexts/CryptoContext";
+import { CurrencyApiType } from "@types";
+import { fetchCurrency } from "@services/fetchApi";
 
 const PageIndex: React.FC = () => {
   const [currency, setcurrency] = useState<CurrencyApiType[] | null>(null);

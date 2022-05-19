@@ -1,7 +1,7 @@
 import cn from "classnames";
 
 import { timeIntervalData } from "./timeIntervalData";
-import { CryptoContextType } from "@/types";
+import { CryptoContextType } from "@types";
 
 const TimeInterval: React.FC<CryptoContextType> = ({ state, dispatch }) => {
   const timeState = state.crypto[0]?.time;

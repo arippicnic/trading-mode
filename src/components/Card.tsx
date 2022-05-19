@@ -1,10 +1,10 @@
 import cn from "classnames";
 import { BsXLg } from "react-icons/bs";
 
-import { CryptoResults } from "@/types";
-import Tooltip, { isToltip } from "@/components/Tooltip";
-import { useCryptoContext } from "@/contexts/CryptoContext";
-import styles from "@/styles/Main.module.scss";
+import { CryptoResults } from "@types";
+import Tooltip, { isToltip } from "@components/Tooltip";
+import { useCryptoContext } from "@contexts/CryptoContext";
+import styles from "@styles/Main.module.scss";
 
 interface CryptoCardPropType {
   crypto: CryptoResults[];

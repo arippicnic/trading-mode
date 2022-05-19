@@ -1,8 +1,8 @@
 import { createContext, useContext, useReducer } from "react";
 
-import { CryptoContextType } from "@/types";
-import { useCryptoStore } from "@/hooks/useCryptoStore";
-import { initialState, actionCryptoReducer } from "@/hooks/useCryptoReducer";
+import { CryptoContextType } from "@types";
+import { useCryptoStore } from "@hooks/useCryptoStore";
+import { initialState, actionCryptoReducer } from "@hooks/useCryptoReducer";
 
 const CryptoContext = createContext<CryptoContextType>({ state: initialState });
 export const useCryptoContext = () => useContext(CryptoContext);

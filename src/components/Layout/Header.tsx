@@ -1,17 +1,17 @@
-import { useState } from "react";
+import cn from "classnames";
 import Image from "next/image";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { BsGithub } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
-import cn from "classnames";
 
-import Logo from "@/styles/logo.svg";
-import ThemeSwitch from "./ThemeSwitch";
-import siteMetadata from "@/siteMetadata";
-import Link from "@/components/Link";
-import Tooltip, { isToltip } from "@/components/Tooltip";
-import Modal from "@/components/Modal";
+import Modal from "@components/Modal";
 import HeaderLinks from "./HeaderLinks";
+import Logo from "@styles/image/logo.svg";
+import ThemeSwitch from "./ThemeSwitch";
+import Link from "@components/Link";
+import { siteMeta } from "@siteMeta";
+import Tooltip, { isToltip } from "@components/Tooltip";
 
 const Header: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
           <Link href="/">
             <div className="flex items-center">
               <div className="mr-3">
-                <Image src={Logo} />
+                <Image alt={siteMeta.author} src={Logo} />
               </div>
               <div
                 className={cn(
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
                   "hidden h-6 text-xl font-semibold sm:block hover:text-black dark:hover:text-white"
                 )}
               >
-                {siteMetadata.name}
+                {siteMeta.name}
               </div>
             </div>
           </Link>
@@ -52,7 +52,7 @@ const Header: React.FC = () => {
             </Modal>
           </div>
           <div>
-            <Link href={siteMetadata.githubUrl} className="hidden sm:block ml-8">
+            <Link href={siteMeta.githubUrl} className="hidden sm:block ml-8">
               <BsGithub {...toltipData} className="text-2xl text-gray-400" />
             </Link>
             <Tooltip id={toltipData["data-for"]} place="bottom" />

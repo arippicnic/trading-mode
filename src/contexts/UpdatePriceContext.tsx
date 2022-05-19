@@ -1,6 +1,6 @@
 import { createContext, useEffect, useContext, useState } from "react";
-import { CryptoResults, CryptoPrice } from "@/types";
-import { urlSplit } from "@/services/general";
+import { CryptoResults, CryptoPrice } from "@types";
+import { urlSplit } from "@services/general";
 
 type ContextProps = {
   isFirstRealodPrice: CryptoPrice;

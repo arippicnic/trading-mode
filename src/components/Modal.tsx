@@ -1,9 +1,9 @@
+import cn from "classnames";
 import { useEffect, useRef } from "react";
 import { BsXLg } from "react-icons/bs";
-import cn from "classnames";
 
-import styles from "@/styles/Main.module.scss";
-import { useOutside } from "@/hooks/useOutside";
+import { useOutside } from "@hooks/useOutside";
+import styles from "@styles/Main.module.scss";
 
 interface ModalType {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;

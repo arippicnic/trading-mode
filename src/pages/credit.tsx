@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import cn from "classnames";
 
-import Link from "@/components/Link";
-import styles from "@/styles/Main.module.scss";
+import Link from "@components/Link";
+import styles from "@styles/Main.module.scss";
 
 const Credit: NextPage = () => {
   const links = [
@@ -12,9 +12,8 @@ const Credit: NextPage = () => {
     { label: "RESTful API Crypto Fear & Greed Index", href: "https://alternative.me" },
   ].map(({ label, href }: { label: string; href: string }) => {
     return (
-      <li className={cn(styles.card, "mb-3 py-2 bg-white dark:bg-[#242425] rounded-md")} key={href}>
+      <li className={cn(styles.card, "flex flex-col mb-3 py-2 bg-white dark:bg-[#242425] rounded-md")} key={href}>
         <span>{label}</span>
-        <br></br>
         <Link href={href}>
           <span className="text-blue-600">{href.replace("https://", "")}</span>
         </Link>

@@ -5,6 +5,7 @@ export type ContextPropsApp = {
     value: number;
     symbol: string;
   };
+  children: React.ReactNode;
 };
 const AppContext = createContext<Partial<ContextPropsApp>>({});
 

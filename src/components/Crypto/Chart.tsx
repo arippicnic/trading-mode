@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { useTheme } from "next-themes";
 
-import { CryptoResults } from "@/types";
+import { CryptoResults } from "@types";
 import { SrenMode } from "./scren";
 
 const Items: React.FC<{ data: CryptoResults; scren: SrenMode }> = ({ data, scren }) => {
@@ -30,6 +30,7 @@ const Items: React.FC<{ data: CryptoResults; scren: SrenMode }> = ({ data, scren
     if (!isRef.current) {
       return;
     }
+
     isRef.current.appendChild(script);
     return () => {
       isRef.current?.removeChild(script);

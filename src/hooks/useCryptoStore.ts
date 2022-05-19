@@ -1,11 +1,11 @@
 import { useMemo, useEffect } from "react";
 
-import { CryptoStateType, CryptoActionType } from "@/types";
+import { CryptoStateType, CryptoActionType } from "@types";
 import { initialState } from "./useCryptoReducer";
-import siteMetadata from "@/siteMetadata";
+import { siteMeta } from "@siteMeta";
 
 export function useCryptoStore([state, dispatch]: [CryptoStateType, React.Dispatch<CryptoActionType>]) {
-  const keyLocal = siteMetadata.localStorage.userInfo;
+  const keyLocal = siteMeta.localStorage.userInfo;
 
   useEffect(() => {
     const local = localStorage.getItem(keyLocal);

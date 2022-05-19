@@ -1,15 +1,14 @@
+import cn from "classnames";
 import { useRef, useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
-import cn from "classnames";
-import { toFixNumber } from "@/services/general";
 
-import { fetchSearch, fetchSearchQuery } from "@/services/fetchApi";
-import useToastContext from "@/hooks/useToasts";
-import { CurrencyApiType } from "@/types";
-import { useCryptoContext } from "@/contexts/CryptoContext";
-import { radomStr } from "@/services/general";
+import useToastContext from "@hooks/useToasts";
+import { toFixNumber, radomStr } from "@services/general";
+import { fetchSearch, fetchSearchQuery } from "@services/fetchApi";
+import { CurrencyApiType } from "@types";
+import { useCryptoContext } from "@contexts/CryptoContext";
+import { useOutside } from "@hooks/useOutside";
 import styles from "@/styles/Main.module.scss";
-import { useOutside } from "@/hooks/useOutside";
 
 const Search: React.FC = () => {
   const { state, dispatch } = useCryptoContext();

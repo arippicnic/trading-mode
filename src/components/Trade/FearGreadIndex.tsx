@@ -1,5 +1,5 @@
-import Tooltip, { isToltip } from "@/components/Tooltip";
-import { perc2color } from "@/services/general";
+import Tooltip, { isToltip } from "@components/Tooltip";
+import { perc2color } from "@services/general";
 
 export type FearType = {
   fication: string;

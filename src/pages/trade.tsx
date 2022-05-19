@@ -1,9 +1,9 @@
 import type { NextPage, NextApiRequest, NextApiResponse } from "next";
 
-import FearGreadIndex, { FearType } from "@/components/PageTradeComponents/FearGreadIndex";
-import PageTrade from "@/components/PageTradeComponents";
-import Search from "@/components/Search";
-import siteMeta from "@/siteMetadata";
+import PageTrade from "@components/Trade";
+import Search from "@components/Search";
+import FearGreadIndex, { FearType } from "@components/Trade/FearGreadIndex";
+import { siteMeta } from "@siteMeta";
 
 const Trade: NextPage<{ contentFear: FearType }> = ({ contentFear }) => {
   return (

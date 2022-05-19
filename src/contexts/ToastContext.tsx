@@ -1,6 +1,6 @@
 import React, { useCallback, useState, createContext } from "react";
 
-import Toast from "@/components/Toast";
+import Toast from "@components/Toast";
 
 const ToastContext = createContext<(id: string) => void>(() => "");
 

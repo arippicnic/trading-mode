@@ -1,5 +1,5 @@
 import { createContext, useState, useMemo, useRef, useEffect, useContext } from "react";
-import { CryptoPrice } from "@/types";
+import { CryptoPrice } from "@types";
 
 type ContextProps = {
   isStrem: CryptoPrice;

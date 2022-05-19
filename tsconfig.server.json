@@ -1,16 +1,16 @@
 {
   "extends": "./tsconfig.json",
-    "compilerOptions": {
-      "noEmit": false,
-      "sourceMap": true,
-      "target": "es5",
-      "module": "commonjs",
-      "declaration": true,
-      "outDir": "./buildServer",
-      "strict": true,
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": true,
-      "resolveJsonModule": true,
-    },
-    "include": ["server/**/*"],
-  }
+  "compilerOptions": {
+    "noEmit": false,
+    "sourceMap": true,
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./buildServer",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  },
+  "include": ["server/**/*"]
+}

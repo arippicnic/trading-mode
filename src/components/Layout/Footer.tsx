@@ -1,5 +1,5 @@
-import Link from "@/components/Link";
-import siteMetadata from "@/siteMetadata";
+import Link from "@components/Link";
+import { siteMeta } from "@siteMeta";
 
 const Footer: React.FC = () => {
   return (
@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="mb-3 flex space-x-2 text-sm text-gray-400">
         <div>{`© ${new Date().getFullYear()}`}</div>
         <div>{` • `}</div>
-        <Link href={siteMetadata.authorUrl}>{siteMetadata.author}</Link>
+        <Link href={siteMeta.authorUrl}>{siteMeta.author}</Link>
       </div>
     </footer>
   );

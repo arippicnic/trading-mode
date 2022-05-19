@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import Tooltip, { isToltip } from "@/components/Tooltip";
+
+import Tooltip, { isToltip } from "@components/Tooltip";
 
 const ThemeSwitch: React.FC = () => {
   const [mounted, setMounted] = useState(false);

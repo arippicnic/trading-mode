@@ -1,7 +1,7 @@
 import NextLink, { LinkProps } from "next/link";
 import { HTMLProps, FC } from "react";
 
-import siteMetadata from "@/siteMetadata";
+import { siteMeta } from "@siteMeta";
 
 const CustomLink: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = ({ href, children, ...rest }) => {
   const isInternalLink = href && href.startsWith("/");
@@ -10,7 +10,7 @@ const CustomLink: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = ({ href, childr
   if (isInternalLink) {
     return (
       <NextLink href={href}>
-        <a aria-label={siteMetadata.name + href} {...rest}>
+        <a aria-label={siteMeta.name + href} {...rest}>
           {children}
         </a>
       </NextLink>
@@ -19,7 +19,7 @@ const CustomLink: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = ({ href, childr
 
   if (isAnchorLink) {
     return (
-      <a href={href} {...rest} aria-label={siteMetadata.name + href}>
+      <a href={href} {...rest} aria-label={siteMeta.name + href}>
         {children}
       </a>
     );

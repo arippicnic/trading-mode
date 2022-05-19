@@ -1,8 +1,8 @@
 import Items from "./Items";
-import { CryptoResults } from "@/types";
-import { StremContextProvider } from "@/contexts/StreamContext";
-import { UpdatePriceProvider } from "@/contexts/UpdatePriceContext";
-import { urlSplit } from "@/services/general";
+import { CryptoResults } from "@types";
+import { StremContextProvider } from "@contexts/StreamContext";
+import { UpdatePriceProvider } from "@contexts/UpdatePriceContext";
+import { urlSplit } from "@services/general";
 
 interface TradingViewProps {
   data: CryptoResults[];

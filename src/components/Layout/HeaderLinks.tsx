@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import cn from "classnames";
 
-import Link from "@/components/Link";
-import siteMetadata from "@/siteMetadata";
+import Link from "@components/Link";
+import { siteMeta } from "@siteMeta";
 
 type HeaderLinksTypes = {
   mobileMode: boolean;
@@ -15,7 +15,7 @@ const HeaderLinks: React.FC<HeaderLinksTypes> = ({ mobileMode }) => {
     { label: "Tradig Mode", path: "/", mobile: false },
     { label: "Trade", path: "/trade", mobile: true },
     { label: "Credit", path: "/credit", mobile: true },
-    { label: "Open Source", path: siteMetadata.githubUrl, mobile: false },
+    { label: "Open Source", path: siteMeta.githubUrl, mobile: false },
   ];
 
   const linksDestop = links.map(({ label, path, mobile }: { label: string; path: string; mobile: boolean }) => {

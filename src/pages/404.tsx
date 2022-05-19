@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Error from "@/components/Error";
+import Error from "@components/Error";
 
 const Four0Four: NextPage = () => {
   return <Error code={404} error="Couldn't find the requested page" />;

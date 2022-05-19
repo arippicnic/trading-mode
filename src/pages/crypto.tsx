@@ -2,10 +2,10 @@ import type { NextPage } from "next";
 import { RiHomeLine } from "react-icons/ri";
 import { useRouter } from "next/router";
 
-import PageCrypto from "@/components/PageCryptoComponents";
-import Link from "@/components/Link";
-import { useCryptoContext } from "@/contexts/CryptoContext";
-import Tooltip, { isToltip } from "@/components/Tooltip";
+import PageCrypto from "@components/Crypto";
+import Link from "@components/Link";
+import { useCryptoContext } from "@contexts/CryptoContext";
+import Tooltip, { isToltip } from "@components/Tooltip";
 
 const Crypto: NextPage = () => {
   const toltipData = isToltip({ name: "Back to home", loop: false });

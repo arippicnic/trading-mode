@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 
-import PageIndex from "@/components/PageIndexComponents";
-import Search from "@/components/Search";
+import PageIndex from "@components/Home";
+import Search from "@components/Search";
 
 const Home: NextPage = () => {
   return (

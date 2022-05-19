@@ -1,11 +1,11 @@
 import cn from "classnames";
 import { AiFillStar } from "react-icons/ai";
-
-import { CurrencyApiType } from "@/types";
-import { formartPrice, toFixNumber, truncate } from "@/services/general";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 import { IoReorderTwoOutline } from "react-icons/io5";
-import { useAppContext } from "@/contexts/AppContext";
+
+import { CurrencyApiType } from "@types";
+import { formartPrice, toFixNumber, truncate } from "@services/general";
+import { useAppContext } from "@contexts/AppContext";
 
 interface TypeTableList {
   data: CurrencyApiType;

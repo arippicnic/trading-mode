@@ -1,4 +1,4 @@
-import { IntervalTime } from "@/types";
+import { IntervalTime } from "@types";
 
 interface TimeProps {
   time: IntervalTime;

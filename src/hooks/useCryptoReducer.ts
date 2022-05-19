@@ -1,5 +1,5 @@
-import { CryptoStateType, CryptoActionType } from "@/types";
-import { newPrice } from "@/services/general";
+import { CryptoStateType, CryptoActionType } from "@types";
+import { newPrice } from "@services/general";
 
 export const initialState = {
   crypto: [],

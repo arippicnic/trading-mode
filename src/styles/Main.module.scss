@@ -1,4 +1,4 @@
-@import "./vars.scss";
+// @import "./vars.scss";
 
 .trv {
   position: relative;
@@ -56,13 +56,12 @@
   }
 }
 
-.tbl{
+.tbl {
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
-  &_th{
+  &_th {
     background-color: var(--color-grey-dark-1);
   }
-  
 }
 
 .card {

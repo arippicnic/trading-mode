@@ -1,5 +1,5 @@
 import { isApiError } from "./general";
-import siteMeta from "@/siteMetadata";
+import { siteMeta } from "@siteMeta";
 
 export const fetchCurrency = async () => {
   try {

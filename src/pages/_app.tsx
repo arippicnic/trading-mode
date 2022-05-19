@@ -3,7 +3,7 @@ import { ThemeProvider } from "next-themes";
 import NextNProgress from "nextjs-progressbar";
 
 import "@/styles/main.scss";
-import siteMeta from "@/siteMetadata";
+import { siteMeta } from "@/siteMeta";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { AppProvider, ContextPropsApp } from "@/contexts/AppContext";

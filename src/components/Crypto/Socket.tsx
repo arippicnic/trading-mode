@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-import { formartPrice, priceStrem } from "@/services/general";
-import { CryptoResults } from "@/types";
-import { useStremContext } from "@/contexts/StreamContext";
-import { useUpdatePriceContext } from "@/contexts/UpdatePriceContext";
-import { useAppContext } from "@/contexts/AppContext";
+import { formartPrice, priceStrem } from "@services/general";
+import { CryptoResults } from "@types";
+import { useStremContext } from "@contexts/StreamContext";
+import { useUpdatePriceContext } from "@contexts/UpdatePriceContext";
+import { useAppContext } from "@contexts/AppContext";
 
 const TredingSocket: React.FC<{ data: CryptoResults }> = ({ data }) => {
   const { isFirstRealodPrice } = useUpdatePriceContext();

@@ -1,10 +1,10 @@
 import React from "react";
 import Head from "next/head";
-import siteMetadata from "@/siteMetadata";
+import { siteMeta } from "@siteMeta";
 import { useRouter } from "next/router";
-import { capitaliz } from "@/services/general";
+import { capitaliz } from "@services/general";
 
-const { description, name, themeColor, author, authorUrl, siteUrl } = siteMetadata;
+const { description, name, themeColor, author, authorUrl, siteUrl } = siteMeta;
 
 const RenderArticel = ({ title }: { title: string }) => (
   <Head>

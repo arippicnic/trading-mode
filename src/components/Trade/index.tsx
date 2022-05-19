@@ -1,7 +1,7 @@
-import { useCryptoContext } from "@/contexts/CryptoContext";
-import Card from "@/components/Card";
-import Link from "@/components/Link";
-import Button from "@/components/Button";
+import { useCryptoContext } from "@contexts/CryptoContext";
+import Card from "@components/Card";
+import Link from "@components/Link";
+import Button from "@components/Button";
 import TimeInterval from "./TimeInterval";
 
 const PageTrade: React.FC = () => {

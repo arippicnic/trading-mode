@@ -1,4 +1,4 @@
-const siteMetadata = {
+export const siteMeta = {
   name: "Trading Mode",
   description: "Tradingview Price Tracker",
   author: "PicnicLab",
@@ -14,5 +14,3 @@ const siteMetadata = {
     userInfo: "userInfo",
   },
 };
-
-module.exports = siteMetadata;

@@ -1,13 +1,13 @@
 import cn from "classnames";
 
 import TableList from "./TableList";
-import { CryptoActionType, CryptoStateType, CurrencyApiType } from "@/types";
 import useToastContext from "@/hooks/useToasts";
-import styles from "@/styles/Main.module.scss";
-import useWindowDimensions from "@/hooks/useDeviceSize";
-import { radomStr } from "@/services/general";
-import { fetchSearchQuery } from "@/services/fetchApi";
-import { useAppContext } from "@/contexts/AppContext";
+import useWindowDimensions from "@hooks/useDeviceSize";
+import { CryptoActionType, CryptoStateType, CurrencyApiType } from "@types";
+import { radomStr } from "@services/general";
+import { fetchSearchQuery } from "@services/fetchApi";
+import { useAppContext } from "@contexts/AppContext";
+import styles from "@styles/Main.module.scss";
 
 type TableType = {
   currenys: CurrencyApiType[];

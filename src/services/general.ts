@@ -1,4 +1,4 @@
-import { CryptoResults, CryptoPrice } from "@/types";
+import { CryptoResults, CryptoPrice } from "@types";
 
 export const isApiError = (
   x: any
