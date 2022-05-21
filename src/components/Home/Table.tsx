@@ -2,7 +2,7 @@ import cn from "classnames";
 
 import TableList from "./TableList";
 import useToastContext from "@/hooks/useToasts";
-import useWindowDimensions from "@hooks/useDeviceSize";
+import useDeviceSize from "@hooks/useDeviceSize";
 import { CryptoActionType, CryptoStateType, CurrencyApiType } from "@types";
 import { radomStr } from "@services/general";
 import { fetchSearchQuery } from "@services/fetchApi";
@@ -18,7 +18,7 @@ type TableType = {
 const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
   const { priceInfo } = useAppContext();
   const addToast = useToastContext();
-  const { width } = useWindowDimensions();
+  const { width } = useDeviceSize();
   const widthTable = width! < 637 ? "hidden" : "";
   const handleAddCrypto = (item: CurrencyApiType) => (e: React.MouseEvent<HTMLElement>) => {
     const { symbol, name, id, priceUsd } = item;
