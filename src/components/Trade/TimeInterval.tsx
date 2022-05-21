@@ -15,7 +15,7 @@ const TimeInterval: React.FC<CryptoContextType> = ({ state, dispatch }) => {
             time === timeState ? "bg-[#8882] text-blue-300" : "text-gray-400 hover:bg-[#8882] hover:text-blue-300",
             "px-3 py-2 mx-1 rounded-md text-sm"
           )}
-          onClick={() => dispatch!({ type: "CHANGETIME", value: time })}
+          onClick={() => dispatch!({ type: "CHANGETIMEALL", value: time })}
         >
           {timeDisplay}
         </button>

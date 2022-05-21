@@ -1,0 +1,55 @@
+.container {
+  position: relative;
+  width: fit-content;
+}
+@mixin menuBase {
+  width: 150px;
+  box-shadow: var(--box-shadow);
+  background-color: var(--color-background-elements);
+  position: absolute;
+  list-style: none;
+  font-size: small;
+  z-index: 100;
+  padding: 0;
+  margin: 0;
+}
+
+.menu {
+  @include menuBase;
+  &_right {
+    top: 1.8em;
+  }
+  &_left {
+    right: 0;
+    bottom: 0%;
+  }
+}
+
+.submenu {
+  @include menuBase;
+  display: none;
+  &_right {
+    left: 100%;
+    top: 0;
+  }
+  &_left {
+    right: 100%;
+    bottom: 0%;
+  }
+}
+
+.item {
+  display: flex;
+  cursor: pointer;
+  padding: 5px 10px;
+  position: relative;
+  &:hover {
+    background-color: #dfdfdf38;
+    & > .submenu {
+      display: block;
+    }
+  }
+  & > span {
+    margin-left: auto;
+  }
+}

@@ -7,10 +7,10 @@ import { useUpdatePriceContext } from "@contexts/UpdatePriceContext";
 import { useAppContext } from "@contexts/AppContext";
 
 const TredingSocket: React.FC<{ data: CryptoResults }> = ({ data }) => {
-  const { isFirstRealodPrice } = useUpdatePriceContext();
-  const { priceInfo } = useAppContext();
   const [isPrice, setPrice] = useState(0);
   const [isFirst, setFirst] = useState(true);
+  const { isFirstRealodPrice } = useUpdatePriceContext();
+  const { priceInfo } = useAppContext();
   const { isStrem } = useStremContext();
 
   useEffect(() => {

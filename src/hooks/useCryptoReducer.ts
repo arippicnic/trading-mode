@@ -40,13 +40,12 @@ export const actionCryptoReducer = (state: CryptoStateType, action: CryptoAction
     case "CHANGETIME":
       return {
         ...state,
-        crypto: state.crypto.map((obj) => ({ ...obj, time: action.value })),
+        crypto: state.crypto.map((e) => (e._id === action.value._id ? { ...e, time: action.value.val } : e)),
       };
-    case "CHANGEPRICE":
+    case "CHANGETIMEALL":
       return {
         ...state,
-        crypto: newPrice(action.value.coin, state.crypto),
-        pair: action.value.pair,
+        crypto: state.crypto.map((obj) => ({ ...obj, time: action.value })),
       };
     default:
       return state;

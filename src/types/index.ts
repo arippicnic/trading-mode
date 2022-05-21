@@ -29,12 +29,16 @@ export type CryptoPrice = {
   [key: string]: string;
 };
 
+export type CryptoTimeType = {
+  _id: CryptoResults["_id"];
+  val: IntervalTime;
+};
 export type CryptoActionType =
   | { type: "STORAGE"; value: CryptoStateType }
   | { type: "ADD"; value: CryptoResults }
   | { type: "REMOVE"; value: string }
-  | { type: "CHANGETIME"; value: IntervalTime }
-  | { type: "CHANGEPRICE"; value: { coin: CryptoPrice; pair: number } };
+  | { type: "CHANGETIME"; value: CryptoTimeType }
+  | { type: "CHANGETIMEALL"; value: IntervalTime };
 
 export type CryptoContextType = {
   state: CryptoStateType;
