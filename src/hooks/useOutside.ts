@@ -16,5 +16,5 @@ export const useOutside = function ({ status, ref }: ContextProps) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [ref]);
+  }, [ref, status]);
 };

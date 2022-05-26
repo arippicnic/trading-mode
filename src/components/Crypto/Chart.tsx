@@ -35,7 +35,7 @@ const Items: React.FC<{ data: CryptoResults; scren: SrenMode }> = ({ data, scren
     return () => {
       isRef.current?.removeChild(script);
     };
-  }, []);
+  }, [srciptData]);
 
   return (
     <div className="tradingview-widget-container" ref={isRef}>

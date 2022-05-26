@@ -55,6 +55,6 @@ export function StremContextProvider({ children, url }: { children: React.ReactN
         client.close();
       };
     }
-  }, [waitingToReconnect]);
+  }, [url, waitingToReconnect]);
   return <StremContext.Provider value={value}>{children}</StremContext.Provider>;
 }
