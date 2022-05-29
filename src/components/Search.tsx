@@ -64,10 +64,10 @@ const Search: React.FC = () => {
   const handleSubmit = (item: CurrencyApiType) => {
     const { symbol, name, id, priceUsd }: CurrencyApiType = item;
 
-    if (state.crypto.length === 3) {
-      addToast("Currency maximal 3");
-      return;
-    }
+    // if (state.crypto.length === 3) {
+    //   addToast("Currency maximal 3");
+    //   return;
+    // }
     const _id = radomStr();
     async function fetchAPI() {
       const resultsQuery = await fetchSearchQuery({ query: symbol });

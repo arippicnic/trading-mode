@@ -2,7 +2,7 @@ import { useMemo, useEffect } from "react";
 
 import { CryptoStateType, CryptoActionType } from "@types";
 import { initialState } from "./useCryptoReducer";
-import { siteMeta } from "@siteMeta";
+import { siteMeta } from "@services/siteMeta";
 
 export function useCryptoStore([state, dispatch]: [CryptoStateType, React.Dispatch<CryptoActionType>]) {
   const keyLocal = siteMeta.localStorage.userInfo;

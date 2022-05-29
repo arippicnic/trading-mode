@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { siteMeta } from "@siteMeta";
+import { siteMeta } from "@services/siteMeta";
 import { useRouter } from "next/router";
 import { capitaliz } from "@services/general";
 

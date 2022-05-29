@@ -1,7 +1,7 @@
 import cn from "classnames";
 
 import TableList from "./TableList";
-import useToastContext from "@/hooks/useToasts";
+import useToastContext from "@hooks/useToasts";
 import useDeviceSize from "@hooks/useDeviceSize";
 import { CryptoActionType, CryptoStateType, CurrencyApiType } from "@types";
 import { radomStr } from "@services/general";
@@ -16,8 +16,9 @@ type TableType = {
 };
 
 const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
-  const { priceInfo } = useAppContext();
   const addToast = useToastContext();
+  const { priceInfo } = useAppContext();
+
   const { width } = useDeviceSize();
   const widthTable = width! < 637 ? "hidden" : "";
   const handleAddCrypto = (item: CurrencyApiType) => (e: React.MouseEvent<HTMLElement>) => {
@@ -32,11 +33,6 @@ const Table: React.FC<TableType> = ({ currenys, dispatch, state }) => {
     }
 
     if (cryptoState) {
-      return;
-    }
-
-    if (state.crypto.length === 3) {
-      addToast("Currency maximal 3");
       return;
     }
 

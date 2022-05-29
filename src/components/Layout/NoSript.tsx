@@ -1,6 +1,6 @@
 import React from "react";
 
-import { siteMeta } from "@siteMeta";
+import { siteMeta } from "@services/siteMeta";
 import Toast from "@components/Toast";
 
 const ToastCom: React.FC = () => {

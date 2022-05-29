@@ -19,7 +19,10 @@ export const actionCryptoReducer = (state: CryptoStateType, action: CryptoAction
         return state;
       }
       if (state.crypto.length === 3) {
-        return state;
+        return {
+          ...state,
+          crypto: [...state.crypto, action.value].filter((t) => t._id !== state.crypto[2]._id),
+        };
       }
       if (state.crypto.length > 0) {
         return {

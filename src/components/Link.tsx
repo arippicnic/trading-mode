@@ -1,7 +1,7 @@
 import NextLink, { LinkProps } from "next/link";
 import { HTMLProps, FC } from "react";
 
-import { siteMeta } from "@siteMeta";
+import { siteMeta } from "@services/siteMeta";
 
 const CustomLink: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = ({ href, children, ...rest }) => {
   const isInternalLink = href && href.startsWith("/");

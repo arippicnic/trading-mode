@@ -24,7 +24,7 @@ const Header: React.FC<CryptoCardPropType> = ({ crypto }) => {
                 <h2 className="text-lg">
                   <span className="text-gray-600 dark:text-gray-100">{data.symbol}</span>
                 </h2>
-                <Setting data={data} position={widthZise} className="text-sm sm:text-sm md:text-md lg:text-lg" />
+                <Setting data={data} position={widthZise} className="text-md lg:text-lg" />
               </div>
               <p className="text-sm text-gray-400">{data.name}</p>
             </div>

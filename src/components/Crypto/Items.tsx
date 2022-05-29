@@ -32,8 +32,8 @@ const Items: React.FC<{ data: CryptoResults; lenght: number }> = ({ data, lenght
       </div>
       {isContent && (
         <div className={trv_closed}>
-          <div className="bg-white dark:bg-[#131722] pl-4 mr-1">
-            <Setting data={data} position="Left" className="text-sm mr-3" />
+          <div className="bg-white dark:bg-[#131722] pl-12 pt-1 pr-7">
+            <Setting data={data} position="Left" className="text-md" />
           </div>
         </div>
       )}

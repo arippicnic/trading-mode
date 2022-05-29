@@ -1,5 +1,5 @@
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
-import { siteMeta } from "@siteMeta";
+import { siteMeta } from "@services/siteMeta";
 
 export default class Document extends NextDocument {
   render() {

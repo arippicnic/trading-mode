@@ -3,7 +3,7 @@ import type { NextPage, NextApiRequest, NextApiResponse } from "next";
 import PageTrade from "@components/Trade";
 import Search from "@components/Search";
 import FearGreadIndex, { FearType } from "@components/Trade/FearGreadIndex";
-import { siteMeta } from "@siteMeta";
+import { siteMeta } from "@services/siteMeta";
 
 const Trade: NextPage<{ contentFear: FearType }> = ({ contentFear }) => {
   return (

@@ -8,6 +8,7 @@ export interface DropdownSubType {
   active: boolean;
   action: () => void;
 }
+
 export type DropPositionType = {
   position: "Left" | "Right";
 };

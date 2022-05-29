@@ -10,7 +10,7 @@ import HeaderLinks from "./HeaderLinks";
 import Logo from "@styles/image/logo.svg";
 import ThemeSwitch from "./ThemeSwitch";
 import Link from "@components/Link";
-import { siteMeta } from "@siteMeta";
+import { siteMeta } from "@services/siteMeta";
 import Tooltip, { isToltip } from "@components/Tooltip";
 
 const Header: React.FC = () => {

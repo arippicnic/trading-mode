@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import cn from "classnames";
 
 import Link from "@components/Link";
-import { siteMeta } from "@siteMeta";
+import { siteMeta } from "@services/siteMeta";
 
 type HeaderLinksTypes = {
   mobileMode: boolean;

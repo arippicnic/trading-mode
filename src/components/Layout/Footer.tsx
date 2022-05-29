@@ -1,5 +1,5 @@
 import Link from "@components/Link";
-import { siteMeta } from "@siteMeta";
+import { siteMeta } from "@services/siteMeta";
 
 const Footer: React.FC = () => {
   return (
