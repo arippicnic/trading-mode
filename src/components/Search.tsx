@@ -10,8 +10,8 @@ import { useCryptoContext } from "@contexts/CryptoContext";
 import { useOutside } from "@hooks/useOutside";
 import styles from "@/styles/Main.module.scss";
 
-const Search: React.FC = () => {
-  const { state, dispatch } = useCryptoContext();
+const Search: React.FC<{ absolute?: boolean }> = ({ absolute = true }) => {
+  const { dispatch } = useCryptoContext();
   const [isActive, setActive] = useState(false);
   const [query, setQuery] = useState<string>("");
   const [queryActice, setQueryActice] = useState(true);
@@ -64,10 +64,6 @@ const Search: React.FC = () => {
   const handleSubmit = (item: CurrencyApiType) => {
     const { symbol, name, id, priceUsd }: CurrencyApiType = item;
 
-    // if (state.crypto.length === 3) {
-    //   addToast("Currency maximal 3");
-    //   return;
-    // }
     const _id = radomStr();
     async function fetchAPI() {
       const resultsQuery = await fetchSearchQuery({ query: symbol });
@@ -99,7 +95,7 @@ const Search: React.FC = () => {
         setResults(result);
       }
       fetchAPISearch();
-    }, 500);
+    }, 300);
 
     return () => clearTimeout(delayDebounceFn);
   }, [query]);
@@ -124,7 +120,7 @@ const Search: React.FC = () => {
         </div>
         {isActive && results && results.length > 0 && (
           <div className="relative w-full">
-            <ul className={cn(srch_result, "absolute z-10")}>
+            <ul className={cn(srch_result, "z-10", { absolute })}>
               {results.map((item, i) => (
                 <li
                   key={item.id}

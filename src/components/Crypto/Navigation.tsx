@@ -22,7 +22,7 @@ const Navigation: React.FC = () => {
       {showModal && (
         <Modal showModal={showModal} setShowModal={setShowModal}>
           <div className="py-3 lg:py-5">
-            <Search />
+            <Search absolute={false} />
           </div>
         </Modal>
       )}

@@ -23,7 +23,7 @@ router.get("/", async (req: Request, res: Response) => {
 });
 router.get("/cryptos", async (req: Request, res: Response) => {
   try {
-    const found = await CryptoUpdate.find().exec();
+    const found = await CryptoUpdate.find().sort({ _no: "asc" }).exec();
     return OK(res, found);
   } catch (err) {
     console.log(err);
