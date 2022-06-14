@@ -28,6 +28,7 @@ interface DropdownTye extends DropPositionType {
 const Dropdown: React.FC<DropdownTye> = ({ datas, children, position }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const menuRef = useRef<HTMLButtonElement | null>(null);
+  const postionRight = position === "Right";
 
   useEffect(() => {
     if (!menuRef.current) {
@@ -35,6 +36,34 @@ const Dropdown: React.FC<DropdownTye> = ({ datas, children, position }) => {
     }
     isOpenMenu && menuRef.current.focus();
   }, [isOpenMenu]);
+
+  const renderSubList = ({ sub }: { sub: DropdownSubType[] }) => {
+    return sub.map((item) => (
+      <li key={item.name} className={cn(styles.item, { "text-blue-300": item.active })} onClick={item.action}>
+        {item.name}
+      </li>
+    ));
+  };
+
+  const renderList = datas.map((menu) => {
+    if (menu.subMenu) {
+      return (
+        <li className={styles.item} key={menu.name}>
+          <div className="flex items-center justify-between w-full">
+            <span>{menu.name}</span>
+          </div>
+          <ul className={cn(styles.submenu, postionRight ? styles.submenu_right : styles.submenu_left)}>
+            {renderSubList({ sub: postionRight ? menu.data! : menu.data?.slice(0).reverse()! })}
+          </ul>
+        </li>
+      );
+    }
+    return (
+      <li className={styles.item} onClick={menu.action} key={menu.name}>
+        {menu.name}
+      </li>
+    );
+  });
 
   return (
     <button
@@ -45,34 +74,8 @@ const Dropdown: React.FC<DropdownTye> = ({ datas, children, position }) => {
       tabIndex={0}
     >
       {children}
-      <ul
-        className={cn(styles.menu, "text-gray-400", position === "Right" ? styles.menu_right : styles.menu_left)}
-        hidden={!isOpenMenu}
-      >
-        {datas.map((menu) => (
-          <React.Fragment key={menu.name}>
-            {menu.subMenu ? (
-              <li className={styles.item}>
-                <div className="flex items-center justify-between w-full">
-                  <span>{menu.name}</span>
-                </div>
-                <ul className={cn(styles.submenu, position === "Right" ? styles.submenu_right : styles.submenu_left)}>
-                  {menu.data?.map((sub) => (
-                    <React.Fragment key={sub.name}>
-                      <li className={cn(styles.item, { "text-blue-300": sub.active })} onClick={sub.action}>
-                        {sub.name}
-                      </li>
-                    </React.Fragment>
-                  ))}
-                </ul>
-              </li>
-            ) : (
-              <li className={styles.item} onClick={menu.action}>
-                {menu.name}
-              </li>
-            )}
-          </React.Fragment>
-        ))}
+      <ul className={cn(styles.menu, "text-gray-400", postionRight ? styles.menu_right : styles.menu_left)} hidden={!isOpenMenu}>
+        {renderList}
       </ul>
     </button>
   );
