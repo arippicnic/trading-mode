@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "concurrently \"npm run clean\" \"sleep 5 && nodemon\"",
     "build": "concurrently \"npm run clean\" \"sleep 5 && next build && tsc --project tsconfig.server.json\"",
-    "start": "node ./buildServer/index.js",
+    "start": "yarn startRun",
+    "startRun": "node ./buildServer/index.js",
     "lint": "next lint",
     "clean": "rimraf node_modules/.cache .next buildServer",
     "test": "jest --watch"
